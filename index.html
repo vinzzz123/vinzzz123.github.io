@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Solutions Showcase</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex justify-between items-center w-full md:w-auto">
+                <a href="#" class="text-2xl font-bold text-blue-700 rounded">
+                    Kristofferus Vincentio Widjaya
+                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path>
+                    </svg>
+                </button>
+            </div>
+            <ul id="nav-menu" class="hidden md:flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 w-full md:w-auto text-center">
+                <li><a href="#home" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200 rounded">Home</a></li>
+                <li><a href="#about" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200 rounded">About Me</a></li>
+                <li><a href="#portfolio" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200 rounded">Portfolio</a></li>
+                <li><a href="#contact" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200 rounded">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 px-4 text-center rounded-b-lg">
+            <div class="container mx-auto max-w-4xl">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 rounded">
+                    Innovating Your Digital Future
+                </h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90 rounded">
+                    Empowering businesses with cutting-edge technology and strategic digital solutions.
+                </p>
+                <a href="#contact" class="inline-block bg-white text-blue-700 hover:bg-blue-100 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Get Started Today
+                </a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-16 px-4 bg-white">
+            <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/CCE5FF/000000?text=About+Us+Image" alt="About Us" class="w-full h-auto object-cover rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 rounded">
+                        Kristofferus Vincentio Widjaya
+                    </h2>
+                    <p class="text-lg text-gray-700 mb-4 leading-relaxed rounded">
+                        We are a passionate team of digital innovators, dedicated to helping businesses thrive in the ever-evolving digital landscape. With years of experience and a client-centric approach, we deliver tailored solutions that drive growth and efficiency.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed rounded">
+                        Our expertise spans across various domains, ensuring that we can meet your unique business challenges with effective and sustainable strategies.
+                    </p>
+                    <a href="#services" class="inline-block mt-6 text-blue-700 hover:text-blue-800 font-semibold transition-colors duration-200 rounded">
+                        Learn More About Our Vision &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 px-4 bg-gray-50">
+            <div class="container mx-auto max-w-6xl text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 rounded">
+                    Projects I've Done
+                </h2>
+                <p class="text-lg text-gray-600 mb-12 rounded">
+                    From concept to execution, we cover all aspects of your digital journey.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="text-blue-600 text-5xl mb-6 flex justify-center items-center">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L12 19.25L14.25 17M12 4V19.25M17.25 12L19.5 14.25L17.25 16.5M7.25 12L4.999 14.25L7.25 16.5"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-900 rounded">Web Development</h3>
+                        <p class="text-gray-600 rounded">Building robust, scalable, and user-friendly websites tailored to your business needs.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="text-blue-600 text-5xl mb-6 flex justify-center items-center">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18.75l-7.5-7.5V5.25A2.25 2.25 0 016.75 3h4.5a2.25 2.25 0 012.25 2.25v6.002a.75.75 0 00-.75-.75H12"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-900 rounded">Artificial Intelligence</h3>
+                        <p class="text-gray-600 rounded">Creating intuitive and high-performance mobile applications for iOS and Android platforms.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="text-blue-600 text-5xl mb-6 flex justify-center items-center">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7m4 14l7-7-7-7"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-900 rounded">Data Analytics</h3>
+                        <p class="text-gray-600 rounded">Crafting effective strategies to boost your online presence and reach your target audience.</p>
+                    </div>
+                    <!-- Service Card 4 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="text-blue-600 text-5xl mb-6 flex justify-center items-center">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4M4 12H2M12 20v-2M22 12h-2M17.657 6.343l-1.414 1.414M6.343 17.657l-1.414 1.414M17.657 17.657l-1.414-1.414M6.343 6.343l-1.414-1.414M12 12c-2.761 0-5-2.239-5-5s2.239-5 5-5 5 2.239 5 5-2.239 5-5 5z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-900 rounded">UI/UX Design</h3>
+                        <p class="text-gray-600 rounded">Designing intuitive and engaging user interfaces for an exceptional user experience.</p>
+                    </div>
+                    <!-- Service Card 5 -->
+                    
+                    <!-- Service Card 6 -->
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16 px-4 bg-white">
+            <div class="container mx-auto max-w-6xl text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 rounded">
+                   My Most Recent Work
+                </h2>
+                <p class="text-lg text-gray-600 mb-12 rounded">
+                    A glimpse into the diverse projects we've brought to life.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Portfolio Item 1 -->
+                    <div class="bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                        <img src="https://placehold.co/600x400/93C5FD/ffffff?text=Project+Alpha" alt="Project Alpha" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900 rounded">Project Alpha</h3>
+                            <p class="text-gray-600 rounded">A comprehensive e-commerce platform with custom features.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200 rounded">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 2 -->
+                    <div class="bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                        <img src="https://placehold.co/600x400/BFDBFE/ffffff?text=Project+Beta" alt="Project Beta" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900 rounded">Project Beta</h3>
+                            <p class="text-gray-600 rounded">Intuitive mobile application for health tracking.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200 rounded">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 3 -->
+                    <div class="bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                        <img src="https://placehold.co/600x400/DBEAFE/000000?text=Project+Gamma" alt="Project Gamma" class="w-full h-48 object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900 rounded">Project Gamma</h3>
+                            <p class="text-gray-600 rounded">Revamped corporate website with enhanced SEO.</p>
+                            <a href="#" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200 rounded">View Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action / Testimonials Section -->
+        <section class="bg-blue-700 text-white py-20 px-4 text-center rounded-t-lg">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 rounded">
+                    Ready to Elevate Your Business?
+                </h2>
+                <p class="text-lg md:text-xl mb-8 opacity-90 rounded">
+                    Join My satisfied clients and experience the difference of expert digital solutions.
+                </p>
+                <a href="#contact" class="inline-block bg-white text-blue-700 hover:bg-blue-100 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Discuss Your Project
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 px-4 bg-gray-50">
+            <div class="container mx-auto max-w-2xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 rounded">
+                    Contact Us
+                </h2>
+                <p class="text-lg text-gray-600 text-center mb-12 rounded">
+                    We'd love to hear from you. Send us a message!
+                </p>
+
+                <form class="bg-white p-8 rounded-lg shadow-xl border border-gray-100">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2 rounded">Name</label>
+                        <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2 rounded">Email</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="your@example.com" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2 rounded">Message</label>
+                        <textarea id="message" name="message" rows="6" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="Tell us about your project or inquiry..." required></textarea>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-300 transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-10 px-4 rounded-t-lg">
+        <div class="container mx-auto max-w-6xl text-center md:text-left flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+            <div class="mb-6 md:mb-0">
+                <h3 class="text-2xl font-bold text-white mb-3 rounded">Kristofferus Widjaya</h3>
+                <p class="text-sm rounded">Innovating for a better digital tomorrow.</p>
+            </div>
+            <div class="flex flex-col items-center md:items-start">
+                <h4 class="text-lg font-semibold text-white mb-3 rounded">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="hover:text-white transition-colors duration-200 rounded">Home</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors duration-200 rounded">About Us</a></li>
+                    <li><a href="#services" class="hover:text-white transition-colors duration-200 rounded">Services</a></li>
+                    <li><a href="#portfolio" class="hover:text-white transition-colors duration-200 rounded">Portfolio</a></li>
+                    <li><a href="#contact" class="hover:text-white transition-colors duration-200 rounded">Contact</a></li>
+                </ul>
+            </div>
+            <div class="flex flex-col items-center md:items-start">
+                <h4 class="text-lg font-semibold text-white mb-3 rounded">Connect With Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 rounded-full p-2 bg-gray-800 hover:bg-blue-700">
+                        <!-- Placeholder for Social Icon (e.g., Facebook) -->
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 5.27 3.847 9.617 8.825 10.395V14.97h-2.903V12h2.903V9.52c0-2.842 1.734-4.417 4.298-4.417 1.22 0 2.272.091 2.578.132v2.793h-1.65c-1.303 0-1.558.618-1.558 1.52v2.092h3.132l-.508 2.97h-2.624v7.412C18.153 21.637 22 17.29 22 12.017A10.017 10.017 0 0012 2z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 rounded-full p-2 bg-gray-800 hover:bg-blue-700">
+                        <!-- Placeholder for Social Icon (e.g., Twitter) -->
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M22.184 5.986c-.792.352-1.64.588-2.527.69a4.48 4.48 0 001.95-2.427 8.95 8.95 0 01-2.827 1.077A4.47 4.47 0 0015.346 3c-2.484 0-4.5 2.016-4.5 4.5 0 .354.04.697.118 1.026A12.72 12.72 0 013.682 4.46a4.49 4.49 0 001.39 5.992 4.468 4.468 0 01-2.03-.56c.002.018.002.036.002.054 0 2.179 1.55 3.998 3.606 4.417a4.502 4.502 0 01-2.022.077c.571 1.783 2.227 3.09 4.195 3.125a8.96 8.96 0 01-5.568 1.916c-.361 0-.717-.021-1.066-.062C3.12 20.083 5.483 21 8.016 21c9.62 0 14.9-7.973 14.9-14.9 0-.227-.005-.453-.015-.678a10.617 10.617 0 002.613-2.716z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm rounded">
+            &copy; <span id="current-year"></span> Kristofferus Vincentio Widjaya. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Get the current year for the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Toggle mobile menu
+        const menuButton = document.getElementById('menu-button');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('flex');
+            navMenu.classList.toggle('flex-col');
+        });
+
+        // Close mobile menu when a link is clicked
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!navMenu.classList.contains('hidden')) {
+                    navMenu.classList.add('hidden');
+                    navMenu.classList.remove('flex');
+                    navMenu.classList.remove('flex-col');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
