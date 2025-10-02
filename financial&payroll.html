@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial & Payroll Services - PT Pendopo Cendana Abadi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-brown: #5d4037;
+            --secondary-brown: #795548;
+            --light-brown: #8d6e63;
+            --lighter-brown: #a1887f;
+            --accent-brown: #6d4c41;
+            --cream: #faf8f5;
+            --cream-dark: #efebe9;
+            --text-dark: #3e2723;
+            --hover-gold: #ffcc80;
+        }
+        
+        /* Dark Mode Palette */
+        body.dark-mode {
+            --primary-brown: #a1887f;
+            --secondary-brown: #8d6e63;
+            --light-brown: #795548;
+            --lighter-brown: #6d4c41;
+            --accent-brown: #bcaaa4;
+            --cream: #2c1f1a;
+            --cream-dark: #3e2723;
+            --text-dark: #efebe9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.dark-mode .feature-card,
+        body.dark-mode .benefits-list li {
+             background: #3e2723;
+        }
+        
+        body.dark-mode .benefits-list {
+            background: #2c1f1a;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1000%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: white;
+            color: var(--primary-brown);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--accent-brown) 0%, var(--light-brown) 100%);
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            color: var(--primary-brown);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--light-brown);
+        }
+
+        .section p {
+            color: var(--accent-brown);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(93, 64, 55, 0.1);
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(93, 64, 55, 0.2);
+        }
+        
+        body.dark-mode .feature-card:hover {
+             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-card li {
+            color: var(--accent-brown);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--light-brown);
+            font-weight: bold;
+        }
+
+        .benefits-list {
+            background: var(--cream-dark);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            transition: background-color 0.3s;
+        }
+
+        .benefits-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .benefits-list li {
+            color: var(--accent-brown);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.05rem;
+            transition: background-color 0.3s;
+        }
+
+        .benefits-list li::before {
+            content: "→";
+            position: absolute;
+            left: 1rem;
+            color: var(--light-brown);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            background: var(--hover-gold);
+            color: var(--text-dark);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #ffb74d;
+            transform: scale(1.05);
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--secondary-brown);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(93, 64, 55, 0.3);
+            z-index: 999;
+            transition: transform 0.3s, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background: var(--light-brown);
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            transition: background-color 0.3s;
+        }
+        
+        body.dark-mode footer {
+            background: #2c1f1a;
+            color: var(--accent-brown);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+            <img src="asset/Logo.png" alt="Logo" style="height: 40px; margin-top: 8px;">
+        </a>
+            <a href="index.html#services" class="back-link">← Back to Services</a>
+        </div>
+    </nav>
+    
+    <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle theme">
+        🌙
+    </button>
+
+    <section class="hero">
+        <div class="hero-icon">📊</div>
+        <h1>Financial & Payroll Services</h1>
+        <p>Comprehensive financial management and payroll solutions for your business</p>
+    </section>
+
+    <div class="container">
+        <div class="section">
+            <h2>About Our Service</h2>
+            <p>Our comprehensive financial and payroll services ensure accurate reporting, regulatory compliance, and timely processing. From annual financial statements to monthly payroll with detailed calculations, we handle all aspects of your financial operations with precision and professionalism.</p>
+            <p>We ensure compliance with company policies and government regulations while providing detailed reporting for salaries, overtime, bonuses, reimbursements, employee tax, and BPJS contributions.</p>
+        </div>
+
+        <div class="section">
+            <h2>What We Offer</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Financial Reporting</h3>
+                    <ul>
+                        <li>Annual financial statement preparation</li>
+                        <li>Cash flow reporting and analysis</li>
+                        <li>Accounts payable (AP) management</li>
+                        <li>Accounts receivable (AR) tracking</li>
+                        <li>Professional invoicing services</li>
+                        <li>Budget planning and forecasting</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Tax Compliance</h3>
+                    <ul>
+                        <li>Company tax reporting and filing</li>
+                        <li>Employee tax calculations (PPh 21)</li>
+                        <li>VAT management and reporting</li>
+                        <li>Tax optimization strategies</li>
+                        <li>Annual tax return preparation</li>
+                        <li>Tax audit support</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Payroll Management</h3>
+                    <ul>
+                        <li>Monthly payroll processing</li>
+                        <li>Salary calculations and adjustments</li>
+                        <li>Overtime and shift differential computation</li>
+                        <li>Bonus and incentive management</li>
+                        <li>Reimbursement processing</li>
+                        <li>Payslip generation and distribution</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>BPJS Administration</h3>
+                    <ul>
+                        <li>BPJS Kesehatan registration</li>
+                        <li>BPJS Ketenagakerjaan management</li>
+                        <li>Monthly contribution calculations</li>
+                        <li>Claim processing support</li>
+                        <li>Compliance monitoring</li>
+                        <li>Employee benefit coordination</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Financial Analysis</h3>
+                    <ul>
+                        <li>Financial performance metrics</li>
+                        <li>Cost analysis and control</li>
+                        <li>Profitability assessment</li>
+                        <li>Variance analysis</li>
+                        <li>Financial dashboard creation</li>
+                        <li>Management reporting</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Compliance & Audit</h3>
+                    <ul>
+                        <li>Regulatory compliance monitoring</li>
+                        <li>Internal audit support</li>
+                        <li>Document management</li>
+                        <li>Policy implementation</li>
+                        <li>Risk assessment</li>
+                        <li>External audit preparation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Benefits</h2>
+            <div class="benefits-list">
+                <ul>
+                    <li>100% accuracy in payroll calculations and tax reporting</li>
+                    <li>Timely salary disbursement ensuring employee satisfaction</li>
+                    <li>Full compliance with Indonesian tax and labor regulations</li>
+                    <li>Reduced administrative burden on your HR team</li>
+                    <li>Transparent reporting with detailed breakdowns</li>
+                    <li>Secure and confidential data handling</li>
+                    <li>Cost savings through efficient processes</li>
+                    <li>Expert guidance on financial best practices</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Streamline Your Financial Operations?</h2>
+            <p>Let our experienced team handle your financial reporting and payroll needs with precision and professionalism.</p>
+            <a href="mailto:info@pendopocendanaabadi.com" class="cta-button">Contact Us Today</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PT Pendopo Cendana Abadi. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const body = document.body;
+
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeToggleBtn.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggleBtn.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference on page load
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggleBtn.textContent = '☀️';
+            }
+        })();
+    </script>
+</body>
+</html>
+

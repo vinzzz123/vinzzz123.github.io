@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture & Interior Design - PT Pendopo Cendana Abadi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-brown: #5d4037;
+            --secondary-brown: #795548;
+            --light-brown: #8d6e63;
+            --lighter-brown: #a1887f;
+            --accent-brown: #6d4c41;
+            --cream: #faf8f5;
+            --cream-dark: #efebe9;
+            --text-dark: #3e2723;
+            --hover-gold: #ffcc80;
+        }
+        
+        /* Dark Mode Palette */
+        body.dark-mode {
+            --primary-brown: #a1887f;
+            --secondary-brown: #8d6e63;
+            --light-brown: #795548;
+            --lighter-brown: #6d4c41;
+            --accent-brown: #bcaaa4;
+            --cream: #2c1f1a;
+            --cream-dark: #3e2723;
+            --text-dark: #efebe9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.dark-mode .feature-card,
+        body.dark-mode .benefits-list li {
+             background: #3e2723;
+        }
+        
+        body.dark-mode .benefits-list {
+            background: #2c1f1a;
+        }
+
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1000%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: white;
+            color: var(--primary-brown);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--accent-brown) 0%, var(--light-brown) 100%);
+            color: white;
+            padding: 150px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            color: var(--primary-brown);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--light-brown);
+        }
+
+        .section p {
+            color: var(--accent-brown);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(93, 64, 55, 0.1);
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(93, 64, 55, 0.2);
+        }
+        
+        body.dark-mode .feature-card:hover {
+             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-card li {
+            color: var(--accent-brown);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--light-brown);
+            font-weight: bold;
+        }
+
+        .benefits-list {
+            background: var(--cream-dark);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            transition: background-color 0.3s;
+        }
+
+        .benefits-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .benefits-list li {
+            color: var(--accent-brown);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.05rem;
+            transition: background-color 0.3s;
+        }
+
+        .benefits-list li::before {
+            content: "→";
+            position: absolute;
+            left: 1rem;
+            color: var(--light-brown);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            background: var(--hover-gold);
+            color: var(--text-dark);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #ffb74d;
+            transform: scale(1.05);
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--secondary-brown);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(93, 64, 55, 0.3);
+            z-index: 999;
+            transition: transform 0.3s, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background: var(--light-brown);
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            transition: background-color 0.3s;
+        }
+        
+        body.dark-mode footer {
+            background: #2c1f1a;
+            color: var(--accent-brown);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+            <img src="asset/Logo.png" alt="Logo" style="height: 40px; margin-top: 8px;">
+            <a href="index.html#services" class="back-link">← Back to Services</a>
+        </div>
+    </nav>
+
+    <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle theme">
+        🌙
+    </button>
+
+    <section class="hero">
+        <div class="hero-icon">🏗️</div>
+        <h1>Architecture & Interior Design</h1>
+        <p>Integrated solutions for building, interior, furniture, and exhibition design</p>
+    </section>
+
+    <div class="container">
+        <div class="section">
+            <h2>About Our Service</h2>
+            <p>In collaboration with South Beyond, we provide integrated architecture, design, and construction solutions. We build long-term, trust-based partnerships guided by creativity, customer focus, sustainability, and absolute precision in execution.</p>
+            <p>Our promise is to deliver projects with meticulous planning, on-time completion, flawless execution, and competitive pricing, turning your vision into a tangible reality.</p>
+        </div>
+
+        <div class="section">
+            <h2>What We Offer</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Architecture & Building</h3>
+                    <ul>
+                        <li>Conceptual design and development</li>
+                        <li>Residential and commercial buildings</li>
+                        <li>Low-rise office buildings</li>
+                        <li>Private residences and bungalows</li>
+                        <li>Construction management</li>
+                        <li>Sustainable design practices</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Interior Construction & Design</h3>
+                    <ul>
+                        <li>Space planning and optimization</li>
+                        <li>Residential interior design</li>
+                        <li>Commercial and office interiors</li>
+                        <li>Material and finish selection</li>
+                        <li>Lighting design</li>
+                        <li>Turnkey interior solutions</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Furniture Design & Production</h3>
+                    <ul>
+                        <li>Custom furniture design</li>
+                        <li>Built-in cabinetry and fixtures</li>
+                        <li>Material sourcing and selection</li>
+                        <li>High-quality craftsmanship</li>
+                        <li>Residential and commercial furniture</li>
+                        <li>Prototyping and production</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Exhibition Design</h3>
+                    <ul>
+                        <li>Exhibition booth concept and design</li>
+                        <li>Pavilion design for trade shows</li>
+                        <li>Brand environment creation</li>
+                        <li>Interactive display design</li>
+                        <li>Material selection and fabrication</li>
+                        <li>Installation and dismantling services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Our Promise to You</h2>
+            <div class="benefits-list">
+                <ul>
+                    <li><strong>Meticulous Planning:</strong> Every detail is considered for a seamless project flow.</li>
+                    <li><strong>On-Time Completion:</strong> We respect your deadlines and deliver as promised.</li>
+                    <li><strong>Flawless Execution:</strong> Our commitment to precision ensures high-quality results.</li>
+                    <li><strong>Competitive Pricing:</strong> We provide value without compromising on quality.</li>
+                    <li><strong>Creative & Sustainable Solutions:</strong> Innovative designs that are environmentally conscious.</li>
+                    <li><strong>End-to-End Project Management:</strong> A single point of contact for a hassle-free experience.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Build Your Vision?</h2>
+            <p>Let's collaborate to create exceptional spaces that are functional, beautiful, and built to last.</p>
+            <a href="mailto:info@pendopocendanaabadi.com" class="cta-button">Contact Us Today</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PT Pendopo Cendana Abadi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const body = document.body;
+
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeToggleBtn.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggleBtn.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference on page load
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggleBtn.textContent = '☀️';
+            }
+        })();
+    </script>
+</body>
+</html>
+
