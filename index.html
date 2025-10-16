@@ -2,993 +2,417 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>PCA - Pendopo Cendana Abadi | Corporate Solutions</title>
-    <meta name="description" content="PT Pendopo Cendana Abadi - Over 15 years delivering excellence in IT solutions, telecommunications, outsourcing, sales activation, and interior design.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kristofferus Vincentio Widjaya - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-
-        :root {
-            --primary-brown: #5d4037;
-            --secondary-brown: #795548;
-            --light-brown: #8d6e63;
-            --lighter-brown: #a1887f;
-            --accent-brown: #6d4c41;
-            --cream: #faf8f5;
-            --cream-dark: #efebe9;
-            --text-dark: #3e2723;
-            --hover-gold: #ffcc80;
-        }
-        
-        /* Dark Mode Palette */
-        body.dark-mode {
-            --primary-brown: #a1887f;
-            --secondary-brown: #8d6e63;
-            --light-brown: #795548;
-            --lighter-brown: #6d4c41;
-            --accent-brown: #bcaaa4;
-            --cream: #2c1f1a; /* Dark background */
-            --cream-dark: #3e2723; /* Slightly lighter dark bg */
-            --text-dark: #efebe9; /* Light text */
-        }
-
+        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-
-        body {
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--cream);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        
-        /* Dark Mode Specific Styles */
-        body.dark-mode .service-card,
-        body.dark-mode .portfolio-item,
-        body.dark-mode .client-logo {
-            background-color: #3e2723;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        body.dark-mode .stats-section {
-            background: var(--cream-dark);
-        }
-
-      /* Navbar */
-.navbar {
-    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
-    color: white;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.nav-container {
-    max-width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: white;
-    text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-    font-weight: 500;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--hover-gold);
-}
-
-.mobile-menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    cursor: pointer;
-}
-
-.mobile-menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: white;
-    border-radius: 2px;
-    transition: all 0.3s;
-}
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--secondary-brown);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(93, 64, 55, 0.3);
-            z-index: 999;
-            transition: transform 0.3s, background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-            background: var(--light-brown);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--accent-brown) 0%, var(--light-brown) 50%, var(--lighter-brown) 100%);
-            color: white;
-            padding: 150px 2rem 100px;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .cta-button {
-            background: var(--hover-gold);
-            color: var(--text-dark);
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .cta-button:hover {
-            background: #ffb74d;
-            transform: scale(1.05);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary-brown);
-            margin-bottom: 1rem;
+        /* Style for the canvas container */
+        #home {
             position: relative;
-            padding-bottom: 1rem;
+            overflow: hidden; /* Ensures canvas corners are clipped */
         }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--light-brown);
-        }
-
-        .section-title p {
-            color: var(--accent-brown);
-            font-size: 1.1rem;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: var(--cream-dark);
-            padding: 3rem 0;
-            transition: background-color 0.3s;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            color: var(--light-brown);
-            font-weight: bold;
-        }
-
-        .stat-label {
-            color: var(--accent-brown);
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(93, 64, 55, 0.1);
-            transition: all 0.3s;
-            border-top: 4px solid var(--light-brown);
-            position: relative;
-            overflow: hidden;
-            height: 100%; /* Ensure cards have same height */
-        }
-
-        .service-card::before {
-            content: '';
+        /* Canvas is positioned as a background */
+        #particle-canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(141, 110, 99, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
+            z-index: 0; /* Behind the content */
         }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(93, 64, 55, 0.2);
-        }
-        
-        body.dark-mode .service-card:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: var(--primary-brown);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .service-card p {
-            color: var(--accent-brown);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-cta {
-            color: var(--light-brown);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s;
-            position: absolute;
-            bottom: 2.5rem;
-        }
-
-        .service-card-link:hover .service-cta {
-            color: var(--primary-brown);
-            text-decoration: underline;
-        }
-
-        .service-cta::after {
-            content: '→';
-            transition: transform 0.3s;
-        }
-
-        .service-card-link:hover .service-cta::after {
-            transform: translateX(5px);
-        }
-
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .portfolio-item {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(93, 64, 55, 0.1);
-            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
-        }
-
-        .portfolio-item:hover {
-            transform: scale(1.05);
-        }
-
-        .portfolio-content {
-            padding: 2rem;
-        }
-
-        .image-placeholder {
-            background: linear-gradient(135deg, var(--cream-dark), var(--lighter-brown));
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-        }
-
-        .portfolio-item h4 {
-            color: var(--primary-brown);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .portfolio-item p {
-            color: var(--accent-brown);
-            font-size: 0.95rem;
-        }
-
-        /* Clients Carousel */
-        .clients-carousel-container {
-            overflow: hidden;
-            padding: 2rem 0;
-        }
-
-        .clients-carousel {
-            display: flex;
-            gap: 3rem;
-            animation: scroll 30s linear infinite;
-        }
-
-        .clients-carousel-bottom {
-            animation: scrollReverse 30s linear infinite;
-        }
-
-        .client-logo {
-            flex: 0 0 150px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(93, 64, 55, 0.1);
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-
-        .client-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: grayscale(100%);
-            transition: filter 0.3s;
-        }
-        
-        body.dark-mode .client-logo img {
-            filter: grayscale(100%) invert(100%);
-        }
-
-        .client-logo:hover img {
-            filter: grayscale(0%);
-        }
-        
-        body.dark-mode .client-logo:hover img {
-            filter: grayscale(0%) invert(0%);
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @keyframes scrollReverse {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
-            color: white;
-            padding: 4rem 2rem;
-        }
-
-        .contact-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .contact h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-details {
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
-
-        .contact-cta {
-            text-align: center;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            transition: background-color 0.3s;
-        }
-        
-        body.dark-mode footer {
-            background: #2c1f1a;
-            color: var(--accent-brown);
-        }
-
-        footer p {
-            opacity: 0.8;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--secondary-brown);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                display: none;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
+        /* Ensure hero content is on top of the canvas */
+        #home .container {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
-<body>
-   <!-- Navbar -->
-<nav class="navbar" id="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="logo">
-            <img src="asset/Logo.png" alt="Logo" style="height: 40px; margin-top: 8px;">
-        </a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#services">Expertise</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#clients">Clients</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="mobile-menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</nav>
-
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle theme">
-        🌙
-    </button>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <h1 class="hero-title">Building Excellence in Corporate Solutions</h1>
-        <p class="hero-subtitle">
-            With over 15 years of experience, PT Pendopo Cendana Abadi delivers client-focused solutions in IT, telecommunications, outsourcing, sales activation, event management, and interior design.
-        </p>
-        <a href="#services" class="cta-button">Explore Our Services</a>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Years of Excellence</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Active Clients</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">3M+</div>
-                    <div class="stat-label">Monthly Transactions</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Projects Delivered</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Expertise</h2>
-                <p>Comprehensive solutions tailored to meet your business needs with quality, efficiency, and exceptional after-sales support</p>
-            </div>
-            
-            <div class="services-grid">
-                <a href="outsourcing.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">💼</div>
-                        <h3>Outsourcing & HR Services</h3>
-                        <p>We simplify HR management, allowing companies to focus on core business. Complete labour management and legal relations with trained professionals ensuring efficiency and compliance.</p>
-                        <div class="service-cta">Learn More</div>
-                    </div>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header/Navbar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex justify-between items-center w-full md:w-auto">
+                <a href="#home" class="text-2xl font-bold text-blue-700">
+                    Kristofferus Vincentio Widjaya
                 </a>
-
-                <a href="financial&payroll.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">📊</div>
-                        <h3>Financial & Payroll Services</h3>
-                        <p>Comprehensive financial reporting, payroll management, tax reporting, and BPJS services. Monthly payroll with detailed calculations for salaries, overtime, and employee benefits.</p>
-                        <div class="service-cta">Learn More</div>
-                    </div>
-                </a>
-
-                <a href="salesactivation.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">🎯</div>
-                        <h3>Sales Activation</h3>
-                        <p>Specializing in offline and online activations. Above The Line and Below The Line marketing solutions to boost product awareness and successful launches.</p>
-                        <div class="service-cta">Learn More</div>
-                    </div>
-                </a>
-
-                <a href="mice.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">🎪</div>
-                        <h3>Corporate Events & MICE</h3>
-                        <p>Build strong relationships through customizable events including workshops, bootcamps, corporate gatherings, meetings, incentives, conventions, and exhibitions.</p>
-                        <div class="service-cta">Learn More</div>
-                    </div>
-                </a>
-
-                <a href="itsolutions.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">💻</div>
-                        <h3>IT Solutions</h3>
-                        <p>One-stop IT solutions including custom application development, API Gateway, ERP systems, mobile apps, payment systems, and IT equipment procurement with flexible rental options.</p>
-                        <div class="service-cta">Learn More</div>
-                    </div>
-                </a>
-
-                <a href="digitaltransformation.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">📈</div>
-                        <h3>Digital Transformation</h3>
-                        <p>Helping businesses unlock full potential through data-driven insights, customer engagement, operational efficiency, change enablement, and agile strategy implementation.</p>
-                        <div class="service-cta">Learn More</div>
-                    </div>
-                </a>
-
-                <a href="architecture&interior.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">🏗️</div>
-                        <h3>Architecture & Interior Design</h3>
-                        <p>Integrated architecture, design, and construction solutions. Building construction, interior design, furniture design, and exhibition design with meticulous planning and flawless execution.</p>
-                        <div class="service-cta">Learn More</div>
-                    </div>
-                </a>
-
-                <a href="itsupport&procurement.html" class="service-card-link">
-                    <div class="service-card">
-                        <div class="service-icon">🔧</div>
-                        <h3>IT Support & Procurement</h3>
-                        <p>Professional IT support with dedicated teams, data security, fast response times, proactive monitoring, and cost-efficient procurement services for managed clients.</p>
-                        <div class="service-cta">Learn More</div>
-                    </div>
-                </a>
+                <button id="menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path>
+                    </svg>
+                </button>
             </div>
-        </div>
-    </section>
+            <ul id="nav-menu" class="hidden md:flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 w-full md:w-auto text-center">
+                <li><a href="#home" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">Home</a></li>
+                <li><a href="#about" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">About Me</a></li>
+                <li><a href="#portfolio" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">Portfolio</a></li>
+                <li><a href="#contact" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Portfolio</h2>
-                <p>Innovative, future-proof, reliable, and affordable solutions putting cutting-edge technology in your hands</p>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="image-placeholder">💳</div>
-                        <h4>API Gateway & Payment Systems</h4>
-                        <p>Handling over 3 million transactions per month from 500+ active merchants with comprehensive reporting dashboard and real-time processing.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="image-placeholder">🏪</div>
-                        <h4>Point of Sales System</h4>
-                        <p>Complete POS system with inventory management, e-commerce apps, and website for modern retail operations.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="image-placeholder">📱</div>
-                        <h4>Mobile App Development</h4>
-                        <p>Android and iOS applications with backend systems for various business needs including content management and scheduling.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="image-placeholder">📊</div>
-                        <h4>ERP System Dashboard</h4>
-                        <p>Comprehensive ERP dashboard components for Kobelco and other enterprise clients managing complex business operations.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="image-placeholder">🎯</div>
-                        <h4>Campaign Management & MLM</h4>
-                        <p>Loyalty points management system for product campaigns and customer engagement with multi-level marketing features.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="image-placeholder">💬</div>
-                        <h4>Messaging & Chatbot Platform</h4>
-                        <p>WhatsApp and Line integration for automated customer service with AI-powered chatbot capabilities.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="image-placeholder">🏢</div>
-                        <h4>Architecture Projects</h4>
-                        <p>Sekolah Harapan Bangsa, private residences, office buildings, and custom interior design projects.</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <div class="portfolio-content">
-                        <div class="image-placeholder">🪑</div>
-                        <h4>Furniture Design & Production</h4>
-                        <p>Custom furniture design and production for residential, commercial, and exhibition spaces.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Clients Section -->
-    <section id="clients">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Valuable Clients</h2>
-                <p>Trusted by leading companies across various industries</p>
-            </div>
-            
-            <div class="clients-carousel-container">
-                <div class="clients-carousel">
-                    <!-- Placeholder for client logos. Replace with <img> tags if you have them. -->
-                    <img src="asset/clients/telkomsel.png" alt="Logo" style="height: 40px; margin-top: 8px;">
-                    <img src="asset/clients/xl axiata.png" alt="Logo" style="height: 40px; margin-top: 8px;">
-                    <img src="asset/clients/axis.png" alt="Logo" style="height: 40px; margin-top: 8px;">
-                    <img src="asset/clients/pru.png" alt="Logo" style="height: 40px; margin-top: 8px;">
-                    <img src="asset/clients/aia.png" alt="Logo" style="height: 40px; margin-top: 8px;">
-                    <img src="asset/clients/kobelco.png" alt="Logo" style="height: 40px; margin-top: 8px;">
-                    <img src="asset/clients/sig.png" alt="Logo" style="height: 40px; margin-top: 8px;">
-                    <img src="asset/clients/angkasa.png" alt="Logo" style="height: 40px; margin-top: 8px;">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About PT Pendopo Cendana Abadi</h2>
-                <p>Building lasting partnerships through excellence and innovation</p>
-            </div>
-            
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 1.2rem; color: var(--accent-brown); line-height: 1.8; margin-bottom: 2rem;">
-                    With over 15 years of experience, PT Pendopo Cendana Abadi is committed to delivering client-focused solutions across multiple domains. Powered by skilled professionals and strong management, we prioritize quality, efficiency, and exceptional after-sales support.
+    <main>
+        <!-- Hero Section with Canvas Background -->
+        <section id="home" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 px-4 text-center">
+            <canvas id="particle-canvas"></canvas>
+            <div class="container mx-auto max-w-4xl">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+                    Kristofferus Vincentio Widjaya
+                </h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90">
+                    A passionate developer and data analyst, creating innovative digital solutions from web applications to data-driven insights.
                 </p>
-                <p style="font-size: 1.1rem; color: var(--accent-brown); line-height: 1.8;">
-                    Our vision is to be the trusted choice for businesses seeking comprehensive solutions in IT, telecommunications, outsourcing, sales activation, event management, and interior design. We believe in building long-term partnerships based on trust, innovation, and measurable results.
-                </p>
+                <a href="#portfolio" class="inline-block bg-white text-blue-700 hover:bg-blue-100 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                    View My Work
+                </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="contact-content">
-            <div class="contact-info">
-                <h3>Get In Touch</h3>
-                <p>Ready to transform your business? Let's discuss how we can help you achieve your goals and drive sustainable growth.</p>
-                
-                <div class="contact-details">
-                    <a href="mailto:info@pendopocendana.com?subject=Business Inquiry&body=Full Name:%0D%0A%0D%0AEmail Address:%0D%0A%0D%0APhone Number(Optional):%0D%0A%0D%0APurpose of Inquiry(e.g., General Question, Technical Support, Product/Service Inquiry, Partnership):%0D%0A%0D%0AMessage/Details: %0D%0A%0D%0A" class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <span class="word-break">Info@pma.co.id</span>
-                        </a>info@pendopocendana.com
-                    
-                    <div class="contact-item">
-                
-                        <div class="contact-icon">📍</div>
-                        <span>Jakarta, Indonesia</span>
-                    </div>
-                    
+        <!-- About Me Section -->
+        <section id="about" class="py-16 px-4 bg-white">
+            <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/CCE5FF/000000?text=K.V.W" alt="Kristofferus Vincentio Widjaya" class="w-full h-auto object-cover rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                        About Me
+                    </h2>
+                    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                        I am a dedicated and versatile developer with a strong foundation in both web development and data science. My experience ranges from building full-stack web applications with PHP and Python to conducting in-depth data analysis and creating insightful visualizations with tools like Tableau.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        I thrive on solving complex problems and turning ideas into tangible, efficient, and user-friendly digital products. My projects demonstrate a commitment to clean code, thoughtful design, and achieving measurable results.
+                    </p>
+                    <a href="#contact" class="inline-block mt-6 text-blue-700 hover:text-blue-800 font-semibold transition-colors duration-200">
+                        Get In Touch &rarr;
+                    </a>
                 </div>
             </div>
-            
-            <div class="contact-cta">
-                <h3>Ready to Start?</h3>
-                <p>Share your details and we'll get in touch with you shortly to discuss your needs and how we can help.</p>
+        </section>
 
-                <a href="mailto:info@pendopocendanaabadi.com?subject=Business Inquiry&body=Full Name:%0D%0A%0D%0AEmail Address:%0D%0A%0D%0APhone Number(Optional):%0D%0A%0D%0APurpose of Inquiry(e.g., General Question, Technical Support, Product/Service Inquiry, Partnership):%0D%0A%0D%0AMessage/Details: %0D%0A%0D%0A" class="cta-button">Contact Us Today</a>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16 px-4 bg-gray-50">
+            <div class="container mx-auto max-w-7xl text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+                   My Portfolio
+                </h2>
+                <p class="text-lg text-gray-600 mb-12">
+                    A collection of my work, from web applications and data analysis to university assignments.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Project 1: Online Forum (PHP) -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <a href="online-forum.html">
+                            <img src="https://placehold.co/600x400/93C5FD/ffffff?text=Online+Forum" alt="Online Forum Project" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Online Forum (PHP Web Application)</h3>
+                            <p class="text-gray-600">A comprehensive, database-driven online forum featuring user management, topics, comments, and admin controls.</p>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <a href="online-forum.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2: Student Performance Analysis -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <a href="student-performance.html">
+                            <img src="https://placehold.co/600x400/BFDBFE/ffffff?text=Data+Analysis" alt="Student Performance Analysis" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Student Performance Analysis</h3>
+                            <p class="text-gray-600">A data science project predicting student GPA using Python, Jupyter, and Tableau for visualization.</p>
+                        </div>
+                         <div class="p-6 pt-0">
+                            <a href="student-performance.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: RandomCinema Movie Recommender -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <a href="random-cinema.html">
+                            <img src="https://placehold.co/600x400/DBEAFE/000000?text=RandomCinema" alt="RandomCinema Project" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">RandomCinema Movie Recommender</h3>
+                            <p class="text-gray-600">A web-based movie recommendation system built with Python and the Streamlit framework.</p>
+                        </div>
+                         <div class="p-6 pt-0">
+                            <a href="random-cinema.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4: IngfoDoc Health Checker -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <a href="ingfodoc.html">
+                            <img src="https://placehold.co/600x400/93C5FD/ffffff?text=IngfoDoc" alt="IngfoDoc Website" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">IngfoDoc Health Symptom Checker</h3>
+                            <p class="text-gray-600">A health information website with a JavaScript-powered questionnaire for preliminary symptom diagnosis.</p>
+                        </div>
+                         <div class="p-6 pt-0">
+                            <a href="ingfodoc.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 & 6: Corporate Websites (PCA & PMA) -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <a href="corporate-websites.html">
+                            <img src="https://placehold.co/600x400/BFDBFE/ffffff?text=Corporate+Sites" alt="Corporate Websites" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Corporate Websites (PCA & PMA)</h3>
+                            <p class="text-gray-600">Developed two distinct corporate websites (for Pendopo Cendana Abadi & Pandawa Makmur Abadi) showcasing company services.</p>
+                        </div>
+                         <div class="p-6 pt-0">
+                            <a href="corporate-websites.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 7: La Sienne Fashion Site -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <a href="la-sienne.html">
+                            <img src="https://placehold.co/600x400/DBEAFE/000000?text=La+Sienne" alt="La Sienne Fashion Site" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">La Sienne Fashion E-commerce Site</h3>
+                            <p class="text-gray-600">A simple and elegant static website for a vintage and printed fashion brand.</p>
+                        </div>
+                         <div class="p-6 pt-0">
+                            <a href="la-sienne.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    
+                     <!-- Project 8 & 9: C++ Assignments -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
+                        <a href="cpp-assignments.html">
+                            <img src="https://placehold.co/600x400/93C5FD/ffffff?text=C%2B%2B+Projects" alt="C++ Assignments" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6 flex-grow">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">C++ Data Structures Assignments</h3>
+                            <p class="text-gray-600">University assignments including a slang dictionary using tree structures and a property data search tool.</p>
+                        </div>
+                         <div class="p-6 pt-0">
+                            <a href="cpp-assignments.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="bg-blue-700 text-white py-20 px-4 text-center">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    Ready to Build Something Great?
+                </h2>
+                <p class="text-lg md:text-xl mb-8 opacity-90">
+                    Let's connect and discuss how I can help bring your digital project to life.
+                </p>
+                <a href="#contact" class="inline-block bg-white text-blue-700 hover:bg-blue-100 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Discuss Your Project
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 px-4 bg-gray-50">
+            <div class="container mx-auto max-w-2xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
+                    Contact Me
+                </h2>
+                <p class="text-lg text-gray-600 text-center mb-12">
+                    I'd love to hear from you. Send me a message!
+                </p>
+
+                <form class="bg-white p-8 rounded-lg shadow-xl border border-gray-100">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="your@example.com" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                        <textarea id="message" name="message" rows="6" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="Tell us about your project or inquiry..." required></textarea>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-300 transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 PT Pendopo Cendana Abadi. All rights reserved.</p>
-        <p>Powered by skilled professionals and strong management, delivering quality, efficiency, and exceptional after-sales support.</p>
+    <footer class="bg-gray-900 text-gray-300 py-10 px-4">
+        <div class="container mx-auto max-w-6xl text-center">
+            <p>&copy; <span id="current-year"></span> Kristofferus Vincentio Widjaya. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        // --- Mobile menu toggle ---
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+        // --- Standard Page Scripts ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuButton = document.getElementById('menu-button');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    navMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // --- Interactive Canvas Background Script ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+
+        // Get the size of the hero section for the canvas
+        const heroSection = document.getElementById('home');
+        canvas.width = heroSection.offsetWidth;
+        canvas.height = heroSection.offsetHeight;
+
+        // Mouse position object
+        const mouse = {
+            x: null,
+            y: null,
+            radius: (canvas.height / 120) * (canvas.width / 120)
         }
 
-        // --- Smooth scrolling for navigation links ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('navLinks').classList.remove('active');
-                }
-            });
+        window.addEventListener('mousemove', (event) => {
+            // Get mouse position relative to the canvas
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = event.clientX - rect.left;
+            mouse.y = event.clientY - rect.top;
         });
 
-        // --- Update active nav link on scroll ---
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = 'home';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // --- Navbar background on scroll ---
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
-            } else {
-                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        // Particle class
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
             }
-        });
-
-        // --- Dark Mode Functionality ---
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const body = document.body;
-
-        function toggleTheme() {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                themeToggleBtn.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeToggleBtn.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
+            // Method to draw individual particle
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.fill();
+            }
+            // Check particle position, check mouse position, move the particle, draw the particle
+            update() {
+                // Check if particle is still within canvas
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+                
+                // Move particle
+                this.x += this.directionX;
+                this.y += this.directionY;
+                
+                // Draw particle
+                this.draw();
             }
         }
 
-        // Check for saved theme preference on page load
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                body.classList.add('dark-mode');
-                themeToggleBtn.textContent = '☀️';
+        // Create particle array
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 2) + 1;
+                let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
+                let directionX = (Math.random() * 0.4) - 0.2;
+                let directionY = (Math.random() * 0.4) - 0.2;
+                let color = 'rgba(255, 255, 255, 0.8)';
+
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
             }
-        })();
+        }
 
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // --- Intersection Observer for fade-in animations ---
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
+        // Check if particles are close enough to draw line between them
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                        ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
                 }
-            });
-        }, observerOptions);
+            }
+        }
 
-        // Observe elements with fade-in effect
-        document.querySelectorAll('.service-card, .portfolio-item, .stat-item, .section-title, .cta-button, .hero-title, .hero-subtitle').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
+        // Resize event
+        window.addEventListener('resize', () => {
+            canvas.width = heroSection.offsetWidth;
+            canvas.height = heroSection.offsetHeight;
+            mouse.radius = (canvas.height / 120) * (canvas.width / 120);
+            init();
         });
+
+        // Mouse out event
+        window.addEventListener('mouseout', () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        init();
+        animate();
+
     </script>
 </body>
 </html>
