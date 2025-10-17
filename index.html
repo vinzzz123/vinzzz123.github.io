@@ -4,38 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kristofferus Vincentio Widjaya - Portfolio</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-        /* Style for the canvas container */
         #home {
             position: relative;
-            overflow: hidden; /* Ensures canvas corners are clipped */
+            overflow: hidden;
         }
-        /* Canvas is positioned as a background */
         #particle-canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* Behind the content */
+            z-index: 0;
         }
-        /* Ensure hero content is on top of the canvas */
         #home .container {
             position: relative;
             z-index: 1;
+        }
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .tech-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: rgb(37, 99, 235);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
@@ -44,18 +57,17 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
             <div class="flex justify-between items-center w-full md:w-auto">
-                <a href="#home" class="text-2xl font-bold text-blue-700">
-                    Kristofferus Vincentio Widjaya
-                </a>
+                <a href="#home" class="text-2xl font-bold text-blue-700">K.V. Widjaya</a>
                 <button id="menu-button" class="md:hidden text-gray-600 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path>
                     </svg>
                 </button>
             </div>
             <ul id="nav-menu" class="hidden md:flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 w-full md:w-auto text-center">
                 <li><a href="#home" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">Home</a></li>
-                <li><a href="#about" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">About Me</a></li>
+                <li><a href="#about" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">About</a></li>
+                <li><a href="#skills" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">Skills</a></li>
                 <li><a href="#portfolio" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">Portfolio</a></li>
                 <li><a href="#contact" class="block py-2 px-3 text-gray-600 hover:text-blue-700 transition-colors duration-200">Contact</a></li>
             </ul>
@@ -63,151 +75,379 @@
     </header>
 
     <main>
-        <!-- Hero Section with Canvas Background -->
-        <section id="home" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 px-4 text-center">
+        <!-- Hero Section -->
+        <section id="home" class="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white py-24 px-4 text-center">
             <canvas id="particle-canvas"></canvas>
-            <div class="container mx-auto max-w-4xl">
-                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+            <div class="container mx-auto max-w-5xl">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
                     Kristofferus Vincentio Widjaya
                 </h1>
-                <p class="text-lg md:text-xl mb-8 opacity-90">
-                    A passionate developer and data analyst, creating innovative digital solutions from web applications to data-driven insights.
+                <p class="text-xl md:text-2xl mb-4 opacity-90 font-light">
+                    Full-Stack Developer & Data Analyst
                 </p>
-                <a href="#portfolio" class="inline-block bg-white text-blue-700 hover:bg-blue-100 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
-                    View My Work
-                </a>
-            </div>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="about" class="py-16 px-4 bg-white">
-            <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <img src="https://placehold.co/600x400/CCE5FF/000000?text=K.V.W" alt="Kristofferus Vincentio Widjaya" class="w-full h-auto object-cover rounded-lg shadow-xl">
-                </div>
-                <div class="md:w-1/2 text-center md:text-left">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                        About Me
-                    </h2>
-                    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
-                        I am a dedicated and versatile developer with a strong foundation in both web development and data science. My experience ranges from building full-stack web applications with PHP and Python to conducting in-depth data analysis and creating insightful visualizations with tools like Tableau.
-                    </p>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        I thrive on solving complex problems and turning ideas into tangible, efficient, and user-friendly digital products. My projects demonstrate a commitment to clean code, thoughtful design, and achieving measurable results.
-                    </p>
-                    <a href="#contact" class="inline-block mt-6 text-blue-700 hover:text-blue-800 font-semibold transition-colors duration-200">
-                        Get In Touch &rarr;
+                <p class="text-lg md:text-xl mb-10 opacity-80 max-w-3xl mx-auto">
+                    Transforming ideas into elegant digital solutions through web development, data science, and machine learning
+                </p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <a href="#portfolio" class="inline-block bg-white text-blue-700 hover:bg-blue-50 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-700 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Get In Touch
                     </a>
                 </div>
             </div>
         </section>
 
+        <!-- About Section -->
+        <section id="about" class="py-20 px-4 bg-white">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">About Me</h2>
+                    <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x600/3B82F6/ffffff?text=K.V.W" alt="Kristofferus Vincentio Widjaya" class="w-full h-auto object-cover rounded-2xl shadow-2xl">
+                    </div>
+                    <div class="md:w-1/2">
+                        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                            I'm a versatile developer with expertise spanning full-stack web development, data science, and machine learning. My passion lies in creating innovative solutions that bridge technology and real-world problems.
+                        </p>
+                        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                            With proficiency in PHP, Python, C++, and modern web technologies, I've built everything from dynamic web applications with database integration to sophisticated data analysis pipelines and machine learning models.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            I believe in writing clean, maintainable code and delivering user-centric solutions that make a measurable impact. Each project is an opportunity to learn, innovate, and push the boundaries of what's possible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-4 bg-gray-50">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Technical Skills</h2>
+                    <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-blue-600 text-4xl mb-4">💻</div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900">Web Development</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• PHP & MySQL</li>
+                            <li>• HTML5, CSS3, JavaScript</li>
+                            <li>• Python (Flask, Streamlit)</li>
+                            <li>• Responsive Design</li>
+                            <li>• RESTful APIs</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-blue-600 text-4xl mb-4">📊</div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900">Data Science</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Python (Pandas, NumPy)</li>
+                            <li>• Data Analysis & Visualization</li>
+                            <li>• Tableau & Jupyter</li>
+                            <li>• Statistical Analysis</li>
+                            <li>• Machine Learning</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-blue-600 text-4xl mb-4">🛠️</div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900">Software Engineering</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• C++ (Data Structures)</li>
+                            <li>• Algorithm Design</li>
+                            <li>• Database Design</li>
+                            <li>• Version Control (Git)</li>
+                            <li>• Problem Solving</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Portfolio Section -->
-        <section id="portfolio" class="py-16 px-4 bg-gray-50">
-            <div class="container mx-auto max-w-7xl text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-                   My Portfolio
-                </h2>
-                <p class="text-lg text-gray-600 mb-12">
-                    A collection of my work, from web applications and data analysis to university assignments.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section id="portfolio" class="py-20 px-4 bg-white">
+            <div class="container mx-auto max-w-7xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Project Portfolio</h2>
+                    <div class="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        A comprehensive collection of projects showcasing expertise across web development, data science, and software engineering
+                    </p>
+                </div>
 
-                    <!-- Project 1: Online Forum (PHP) -->
-                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <a href="online-forum.html">
-                            <img src="https://placehold.co/600x400/93C5FD/ffffff?text=Online+Forum" alt="Online Forum Project" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="p-6 flex-grow">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Online Forum (PHP Web Application)</h3>
-                            <p class="text-gray-600">A comprehensive, database-driven online forum featuring user management, topics, comments, and admin controls.</p>
-                        </div>
-                        <div class="p-6 pt-0">
-                            <a href="online-forum.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
-                        </div>
-                    </div>
+                <!-- Category Tabs -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button onclick="filterProjects('all')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-blue-600 text-white">
+                        All Projects
+                    </button>
+                    <button onclick="filterProjects('data-science')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300">
+                        Data Science & ML
+                    </button>
+                    <button onclick="filterProjects('web-dev')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300">
+                        Web Development
+                    </button>
+                    <button onclick="filterProjects('software')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300">
+                        Software Engineering
+                    </button>
+                </div>
+
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <!-- Project 2: Student Performance Analysis -->
-                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <a href="student-performance.html">
-                            <img src="https://placehold.co/600x400/BFDBFE/ffffff?text=Data+Analysis" alt="Student Performance Analysis" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="p-6 flex-grow">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Student Performance Analysis</h3>
-                            <p class="text-gray-600">A data science project predicting student GPA using Python, Jupyter, and Tableau for visualization.</p>
+                    <!-- Data Science Projects -->
+                    
+                    <!-- Student Performance Analysis -->
+                    <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden" data-category="data-science">
+                        <div class="h-48 bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
+                            <div class="text-white text-6xl">📊</div>
                         </div>
-                         <div class="p-6 pt-0">
-                            <a href="student-performance.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        <div class="p-6">
+                            <div class="mb-3">
+                                <span class="category-badge bg-purple-100 text-purple-700">Data Science</span>
+                                <span class="category-badge bg-indigo-100 text-indigo-700">Machine Learning</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 text-gray-900">Student Performance Analysis</h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Advanced predictive analytics project analyzing 2,392 student records to predict GPA using machine learning. Features comprehensive EDA, multiple regression models, and interactive Tableau dashboards.
+                            </p>
+                            <div class="mb-4">
+                                <p class="text-sm font-semibold text-gray-700 mb-2">Technologies:</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Pandas</span>
+                                    <span class="tech-tag">Scikit-learn</span>
+                                    <span class="tech-tag">Tableau</span>
+                                    <span class="tech-tag">Jupyter</span>
+                                </div>
+                            </div>
+                            <div class="border-t pt-4">
+                                <p class="text-sm text-gray-600"><strong>Key Features:</strong></p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• 15 predictive features analyzed</li>
+                                    <li>• Multiple ML models compared</li>
+                                    <li>• Interactive visualizations</li>
+                                    <li>• Statistical significance testing</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 3: RandomCinema Movie Recommender -->
-                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <a href="random-cinema.html">
-                            <img src="https://placehold.co/600x400/DBEAFE/000000?text=RandomCinema" alt="RandomCinema Project" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="p-6 flex-grow">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">RandomCinema Movie Recommender</h3>
-                            <p class="text-gray-600">A web-based movie recommendation system built with Python and the Streamlit framework.</p>
+                    <!-- RandomCinema Movie Recommender -->
+                    <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden" data-category="data-science web-dev">
+                        <div class="h-48 bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center">
+                            <div class="text-white text-6xl">🎬</div>
                         </div>
-                         <div class="p-6 pt-0">
-                            <a href="random-cinema.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 4: IngfoDoc Health Checker -->
-                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <a href="ingfodoc.html">
-                            <img src="https://placehold.co/600x400/93C5FD/ffffff?text=IngfoDoc" alt="IngfoDoc Website" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="p-6 flex-grow">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">IngfoDoc Health Symptom Checker</h3>
-                            <p class="text-gray-600">A health information website with a JavaScript-powered questionnaire for preliminary symptom diagnosis.</p>
-                        </div>
-                         <div class="p-6 pt-0">
-                            <a href="ingfodoc.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        <div class="p-6">
+                            <div class="mb-3">
+                                <span class="category-badge bg-red-100 text-red-700">Data Science</span>
+                                <span class="category-badge bg-pink-100 text-pink-700">Web App</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 text-gray-900">RandomCinema Movie Recommender</h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Intelligent movie recommendation system built with Python and Streamlit, analyzing 10,000 movies across multiple genres with advanced filtering and personalized suggestions.
+                            </p>
+                            <div class="mb-4">
+                                <p class="text-sm font-semibold text-gray-700 mb-2">Technologies:</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Streamlit</span>
+                                    <span class="tech-tag">Pandas</span>
+                                    <span class="tech-tag">Data Analysis</span>
+                                </div>
+                            </div>
+                            <div class="border-t pt-4">
+                                <p class="text-sm text-gray-600"><strong>Key Features:</strong></p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• 10,000+ movie database</li>
+                                    <li>• Genre-based filtering</li>
+                                    <li>• Rating & popularity analysis</li>
+                                    <li>• Interactive web interface</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 5 & 6: Corporate Websites (PCA & PMA) -->
-                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <a href="corporate-websites.html">
-                            <img src="https://placehold.co/600x400/BFDBFE/ffffff?text=Corporate+Sites" alt="Corporate Websites" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="p-6 flex-grow">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">Corporate Websites (PCA & PMA)</h3>
-                            <p class="text-gray-600">Developed two distinct corporate websites (for Pendopo Cendana Abadi & Pandawa Makmur Abadi) showcasing company services.</p>
+                    <!-- Web Development Projects -->
+                    
+                    <!-- Online Forum -->
+                    <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden" data-category="web-dev">
+                        <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
+                            <div class="text-white text-6xl">💬</div>
                         </div>
-                         <div class="p-6 pt-0">
-                            <a href="corporate-websites.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        <div class="p-6">
+                            <div class="mb-3">
+                                <span class="category-badge bg-blue-100 text-blue-700">Full-Stack</span>
+                                <span class="category-badge bg-cyan-100 text-cyan-700">PHP</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 text-gray-900">Online Forum Platform</h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Feature-rich discussion forum with complete user authentication, role-based access control, topic management, and administrative dashboard. Built with PHP and MySQL.
+                            </p>
+                            <div class="mb-4">
+                                <p class="text-sm font-semibold text-gray-700 mb-2">Technologies:</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">PHP</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">HTML/CSS</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                </div>
+                            </div>
+                            <div class="border-t pt-4">
+                                <p class="text-sm text-gray-600"><strong>Key Features:</strong></p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• User authentication system</li>
+                                    <li>• Admin panel & moderation</li>
+                                    <li>• CRUD operations</li>
+                                    <li>• Database-driven architecture</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Project 7: La Sienne Fashion Site -->
-                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <a href="la-sienne.html">
-                            <img src="https://placehold.co/600x400/DBEAFE/000000?text=La+Sienne" alt="La Sienne Fashion Site" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="p-6 flex-grow">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">La Sienne Fashion E-commerce Site</h3>
-                            <p class="text-gray-600">A simple and elegant static website for a vintage and printed fashion brand.</p>
+
+                    <!-- IngfoDoc Health Checker -->
+                    <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden" data-category="web-dev">
+                        <div class="h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                            <div class="text-white text-6xl">🏥</div>
                         </div>
-                         <div class="p-6 pt-0">
-                            <a href="la-sienne.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        <div class="p-6">
+                            <div class="mb-3">
+                                <span class="category-badge bg-green-100 text-green-700">Web App</span>
+                                <span class="category-badge bg-emerald-100 text-emerald-700">JavaScript</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 text-gray-900">IngfoDoc Health Symptom Checker</h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Interactive health information platform with intelligent symptom assessment questionnaire, providing preliminary diagnostic suggestions based on user responses.
+                            </p>
+                            <div class="mb-4">
+                                <p class="text-sm font-semibold text-gray-700 mb-2">Technologies:</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">UI/UX Design</span>
+                                </div>
+                            </div>
+                            <div class="border-t pt-4">
+                                <p class="text-sm text-gray-600"><strong>Key Features:</strong></p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• Dynamic questionnaire system</li>
+                                    <li>• Symptom analysis algorithm</li>
+                                    <li>• Responsive design</li>
+                                    <li>• Health information library</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    
-                     <!-- Project 8 & 9: C++ Assignments -->
-                    <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col">
-                        <a href="cpp-assignments.html">
-                            <img src="https://placehold.co/600x400/93C5FD/ffffff?text=C%2B%2B+Projects" alt="C++ Assignments" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="p-6 flex-grow">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">C++ Data Structures Assignments</h3>
-                            <p class="text-gray-600">University assignments including a slang dictionary using tree structures and a property data search tool.</p>
+
+                    <!-- Corporate Websites -->
+                    <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden" data-category="web-dev">
+                        <div class="h-48 bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center">
+                            <div class="text-white text-6xl">🏢</div>
                         </div>
-                         <div class="p-6 pt-0">
-                            <a href="cpp-assignments.html" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">View Details &rarr;</a>
+                        <div class="p-6">
+                            <div class="mb-3">
+                                <span class="category-badge bg-orange-100 text-orange-700">Corporate</span>
+                                <span class="category-badge bg-amber-100 text-amber-700">Multi-Site</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 text-gray-900">Corporate Websites Portfolio</h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Professional corporate websites for Pendopo Cendana Abadi (PCA) and Pandawa Makmur Abadi (PMA), featuring service showcases, company profiles, and contact systems.
+                            </p>
+                            <div class="mb-4">
+                                <p class="text-sm font-semibold text-gray-700 mb-2">Technologies:</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">Responsive</span>
+                                </div>
+                            </div>
+                            <div class="border-t pt-4">
+                                <p class="text-sm text-gray-600"><strong>Key Features:</strong></p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• Professional business presence</li>
+                                    <li>• Service portfolio display</li>
+                                    <li>• Contact forms</li>
+                                    <li>• Mobile-optimized design</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- La Sienne Fashion -->
+                    <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden" data-category="web-dev">
+                        <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+                            <div class="text-white text-6xl">👗</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="mb-3">
+                                <span class="category-badge bg-pink-100 text-pink-700">E-commerce</span>
+                                <span class="category-badge bg-rose-100 text-rose-700">Fashion</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 text-gray-900">La Sienne Fashion Site</h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Elegant e-commerce website for a vintage and printed fashion brand, featuring product catalogs, shopping functionality, and modern aesthetic design.
+                            </p>
+                            <div class="mb-4">
+                                <p class="text-sm font-semibold text-gray-700 mb-2">Technologies:</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">UI Design</span>
+                                </div>
+                            </div>
+                            <div class="border-t pt-4">
+                                <p class="text-sm text-gray-600"><strong>Key Features:</strong></p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• Product catalog system</li>
+                                    <li>• Modern, elegant design</li>
+                                    <li>• Fashion-focused UX</li>
+                                    <li>• Responsive layout</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Software Engineering Projects -->
+                    
+                    <!-- C++ Data Structures -->
+                    <div class="project-card bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden" data-category="software">
+                        <div class="h-48 bg-gradient-to-br from-slate-600 to-gray-700 flex items-center justify-center">
+                            <div class="text-white text-6xl">⚙️</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="mb-3">
+                                <span class="category-badge bg-slate-100 text-slate-700">C++</span>
+                                <span class="category-badge bg-gray-100 text-gray-700">Algorithms</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 text-gray-900">Data Structures Portfolio</h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Academic projects demonstrating advanced data structure implementation, including a slang dictionary using binary search trees and a property search system with custom algorithms.
+                            </p>
+                            <div class="mb-4">
+                                <p class="text-sm font-semibold text-gray-700 mb-2">Technologies:</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tech-tag">C++</span>
+                                    <span class="tech-tag">Trees</span>
+                                    <span class="tech-tag">Algorithms</span>
+                                    <span class="tech-tag">OOP</span>
+                                </div>
+                            </div>
+                            <div class="border-t pt-4">
+                                <p class="text-sm text-gray-600"><strong>Key Features:</strong></p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• Binary search tree implementation</li>
+                                    <li>• Custom search algorithms</li>
+                                    <li>• Memory-efficient structures</li>
+                                    <li>• Complex data manipulation</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -216,57 +456,103 @@
         </section>
 
         <!-- Call to Action -->
-        <section class="bg-blue-700 text-white py-20 px-4 text-center">
+        <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20 px-4 text-center">
             <div class="container mx-auto max-w-4xl">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                    Ready to Build Something Great?
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Let's Build Something Amazing Together
                 </h2>
-                <p class="text-lg md:text-xl mb-8 opacity-90">
-                    Let's connect and discuss how I can help bring your digital project to life.
+                <p class="text-lg md:text-xl mb-10 opacity-90 max-w-2xl mx-auto">
+                    Whether it's a data-driven solution, a web application, or a complex software system, I'm ready to turn your vision into reality.
                 </p>
-                <a href="#contact" class="inline-block bg-white text-blue-700 hover:bg-blue-100 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
-                    Discuss Your Project
+                <a href="#contact" class="inline-block bg-white text-blue-700 hover:bg-blue-50 font-semibold py-4 px-10 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Start a Conversation
                 </a>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-16 px-4 bg-gray-50">
+        <section id="contact" class="py-20 px-4 bg-gray-50">
             <div class="container mx-auto max-w-2xl">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-                    Contact Me
-                </h2>
-                <p class="text-lg text-gray-600 text-center mb-12">
-                    I'd love to hear from you. Send me a message!
-                </p>
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Get In Touch</h2>
+                    <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600">
+                        Have a project in mind? Let's discuss how we can work together.
+                    </p>
+                </div>
 
-                <form class="bg-white p-8 rounded-lg shadow-xl border border-gray-100">
+                <form class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100">
                     <div class="mb-6">
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
-                        <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="Your Name" required>
+                        <input type="text" id="name" name="name" class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" placeholder="Your Name" required>
                     </div>
                     <div class="mb-6">
                         <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="your@example.com" required>
+                        <input type="email" id="email" name="email" class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" placeholder="your@email.com" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="subject" class="block text-gray-700 text-sm font-bold mb-2">Subject</label>
+                        <input type="text" id="subject" name="subject" class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" placeholder="Project Inquiry" required>
                     </div>
                     <div class="mb-6">
                         <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
-                        <textarea id="message" name="message" rows="6" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="Tell us about your project or inquiry..." required></textarea>
+                        <textarea id="message" name="message" rows="6" class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" placeholder="Tell me about your project or inquiry..." required></textarea>
                     </div>
                     <div class="flex items-center justify-center">
-                        <button type="submit" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-300 transform hover:scale-105">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full focus:outline-none focus:shadow-outline transition-all duration-300 transform hover:scale-105 shadow-lg">
                             Send Message
                         </button>
                     </div>
                 </form>
+
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 mb-4">Or connect with me on:</p>
+                    <div class="flex justify-center gap-6">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-10 px-4">
-        <div class="container mx-auto max-w-6xl text-center">
-            <p>&copy; <span id="current-year"></span> Kristofferus Vincentio Widjaya. All rights reserved.</p>
+    <footer class="bg-gray-900 text-gray-300 py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-4">Kristofferus V. Widjaya</h3>
+                    <p class="text-gray-400">Full-Stack Developer & Data Analyst specializing in creating innovative digital solutions.</p>
+                </div>
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-4">Expertise</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>• Web Development</li>
+                        <li>• Data Science & ML</li>
+                        <li>• Software Engineering</li>
+                        <li>• Database Design</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p>&copy; <span id="current-year"></span> Kristofferus Vincentio Widjaya. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -289,17 +575,43 @@
             });
         });
 
+        // --- Project Filtering System ---
+        function filterProjects(category) {
+            const projectCards = document.querySelectorAll('.project-card');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            // Update button styles
+            filterButtons.forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-blue-600', 'text-white');
+            
+            // Filter projects
+            projectCards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const categories = card.getAttribute('data-category');
+                    if (categories.includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
         // --- Interactive Canvas Background Script ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particlesArray;
 
-        // Get the size of the hero section for the canvas
         const heroSection = document.getElementById('home');
         canvas.width = heroSection.offsetWidth;
         canvas.height = heroSection.offsetHeight;
 
-        // Mouse position object
         const mouse = {
             x: null,
             y: null,
@@ -307,13 +619,11 @@
         }
 
         window.addEventListener('mousemove', (event) => {
-            // Get mouse position relative to the canvas
             const rect = canvas.getBoundingClientRect();
             mouse.x = event.clientX - rect.left;
             mouse.y = event.clientY - rect.top;
         });
 
-        // Particle class
         class Particle {
             constructor(x, y, directionX, directionY, size, color) {
                 this.x = x;
@@ -323,16 +633,13 @@
                 this.size = size;
                 this.color = color;
             }
-            // Method to draw individual particle
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
                 ctx.fill();
             }
-            // Check particle position, check mouse position, move the particle, draw the particle
             update() {
-                // Check if particle is still within canvas
                 if (this.x > canvas.width || this.x < 0) {
                     this.directionX = -this.directionX;
                 }
@@ -340,16 +647,13 @@
                     this.directionY = -this.directionY;
                 }
                 
-                // Move particle
                 this.x += this.directionX;
                 this.y += this.directionY;
                 
-                // Draw particle
                 this.draw();
             }
         }
 
-        // Create particle array
         function init() {
             particlesArray = [];
             let numberOfParticles = (canvas.height * canvas.width) / 9000;
@@ -365,7 +669,6 @@
             }
         }
 
-        // Animation loop
         function animate() {
             requestAnimationFrame(animate);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -376,7 +679,6 @@
             connect();
         }
 
-        // Check if particles are close enough to draw line between them
         function connect() {
             let opacityValue = 1;
             for (let a = 0; a < particlesArray.length; a++) {
@@ -396,7 +698,6 @@
             }
         }
 
-        // Resize event
         window.addEventListener('resize', () => {
             canvas.width = heroSection.offsetWidth;
             canvas.height = heroSection.offsetHeight;
@@ -404,7 +705,6 @@
             init();
         });
 
-        // Mouse out event
         window.addEventListener('mouseout', () => {
             mouse.x = undefined;
             mouse.y = undefined;
@@ -416,4 +716,3 @@
     </script>
 </body>
 </html>
-
