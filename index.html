@@ -32,7 +32,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -113,7 +112,6 @@
             transition: all 0.3s;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -212,7 +210,6 @@
             color: var(--primary);
         }
 
-        /* Top Clients - Hero Section */
         .hero-clients {
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
@@ -277,7 +274,6 @@
             margin: 0;
         }
 
-        /* Sections */
         section {
             padding: 6rem 2rem;
             position: relative;
@@ -323,7 +319,6 @@
             margin-top: 1.5rem;
         }
 
-        /* About Section */
         .about {
             background: var(--white);
         }
@@ -380,7 +375,6 @@
             opacity: 0.95;
         }
 
-        /* Skills */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -436,7 +430,6 @@
             color: var(--white);
         }
 
-        /* Projects */
         .projects {
             background: var(--light);
         }
@@ -544,7 +537,6 @@
             transform: scale(1.02);
         }
 
-        /* Contact */
         .contact {
             background: var(--dark);
             color: var(--white);
@@ -602,7 +594,6 @@
             color: var(--accent);
         }
 
-        /* Footer */
         footer {
             background: #000000;
             color: var(--white);
@@ -635,7 +626,6 @@
             color: var(--primary);
         }
 
-        /* Responsive Design */
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -730,7 +720,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo">VINCENT</div>
@@ -750,7 +739,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -795,7 +783,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
@@ -886,7 +873,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
@@ -896,7 +882,6 @@
             
             <div class="projects-grid">
                 
-                <!-- PMA Project -->
                 <div class="project-card">
                     <div class="project-banner">
                         <div class="project-emoji">🏢</div>
@@ -913,11 +898,50 @@
                             <span class="tech-tag">Responsive</span>
                             <span class="tech-tag">SEO</span>
                         </div>
+                        <a href="https://github.com/vinzzz123/PMA" target="_blank" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-banner">
+                        <div class="project-emoji">🎬</div>
+                    </div>
+                    <div class="project-body">
+                        <h3>Film Analytics</h3>
+                        <p>
+                            Comprehensive film dataset analysis exploring box office trends, genre patterns, 
+                            and audience preferences using advanced statistical methods and visualization.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Jupyter</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Data Viz</span>
+                        </div>
+                        <a href="https://github.com/vinzzz123/Film" target="_blank" class="project-link">View Project →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-banner">
+                        <div class="project-emoji">📊</div>
+                    </div>
+                    <div class="project-body">
+                        <h3>Big Data Processing</h3>
+                        <p>
+                            Large-scale data processing pipeline implementing distributed computing techniques 
+                            for efficient handling and analysis of massive datasets.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Big Data</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Jupyter</span>
+                            <span class="tech-tag">ETL</span>
+                        </div>
                         <a href="https://github.com/vinzzz123/Big-Dataa" target="_blank" class="project-link">View Project →</a>
                     </div>
                 </div>
 
-                <!-- Analysis -->
                 <div class="project-card">
                     <div class="project-banner">
                         <div class="project-emoji">📈</div>
@@ -938,7 +962,6 @@
                     </div>
                 </div>
 
-                <!-- Finance -->
                 <div class="project-card">
                     <div class="project-banner">
                         <div class="project-emoji">💰</div>
@@ -959,7 +982,6 @@
                     </div>
                 </div>
 
-                <!-- Oracle -->
                 <div class="project-card">
                     <div class="project-banner">
                         <div class="project-emoji">🗄️</div>
@@ -980,7 +1002,6 @@
                     </div>
                 </div>
 
-                <!-- AOI2 -->
                 <div class="project-card">
                     <div class="project-banner">
                         <div class="project-emoji">🔍</div>
@@ -1001,7 +1022,6 @@
                     </div>
                 </div>
 
-                <!-- ProyeKita -->
                 <div class="project-card">
                     <div class="project-banner">
                         <div class="project-emoji">🌐</div>
@@ -1022,7 +1042,6 @@
                     </div>
                 </div>
 
-                <!-- PCA -->
                 <div class="project-card">
                     <div class="project-banner">
                         <div class="project-emoji">🧮</div>
@@ -1047,7 +1066,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
@@ -1080,7 +1098,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 Vincent. All Rights Reserved.</p>
@@ -1095,7 +1112,6 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const navMenu = document.getElementById('navMenu');
 
@@ -1103,14 +1119,12 @@
             navMenu.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
             });
         });
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1124,7 +1138,6 @@
             });
         });
 
-        // Header scroll effect
         let lastScroll = 0;
         const header = document.querySelector('header');
 
@@ -1140,7 +1153,6 @@
             lastScroll = currentScroll;
         });
 
-        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.3,
             rootMargin: '0px 0px -100px 0px'
@@ -1155,64 +1167,12 @@
             });
         }, observerOptions);
 
-        // Animate elements on scroll - but NOT section headers
         document.querySelectorAll('.project-card, .skill-box, .stat-item, .contact-card, .top-client-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             fadeInObserver.observe(el);
         });
-
-        // Parallax effect on hero - disabled to prevent overlap issues
-        // window.addEventListener('scroll', () => {
-        //     const scrolled = window.pageYOffset;
-        //     const hero = document.querySelector('.hero');
-        //     if (hero && scrolled < window.innerHeight) {
-        //         hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        //     }
-        // });
     </script>
 </body>
-</html>123/PMA" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <!-- Film Analysis -->
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">🎬</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Film Analytics</h3>
-                        <p>
-                            Comprehensive film dataset analysis exploring box office trends, genre patterns, 
-                            and audience preferences using advanced statistical methods and visualization.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Jupyter</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Data Viz</span>
-                        </div>
-                        <a href="https://github.com/vinzzz123/Film" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <!-- Big Data -->
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">📊</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Big Data Processing</h3>
-                        <p>
-                            Large-scale data processing pipeline implementing distributed computing techniques 
-                            for efficient handling and analysis of massive datasets.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Big Data</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Jupyter</span>
-                            <span class="tech-tag">ETL</span>
-                        </div>
-                        <a href="https://github.com/vinzzz
+</html>
