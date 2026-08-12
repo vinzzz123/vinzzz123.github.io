@@ -24,7 +24,6 @@ build step, no dependencies. Deploys to GitHub Pages as a straight file drop.
 ```
 index.html              Portfolio — hero, work, about, experience, contact
 projects/
-  prism.html            Case study: internal billing dashboard (internship)
   38-nil.html           Case study: football draft game
   kyokushin.html        Case study: member management site
 assets/
