@@ -31,7 +31,6 @@ assets/
   css/style.css         Design system and all page styles
   js/main.js            Theme, navigation, scroll reveal
   img/                  Screenshots and favicon
-  cv.pdf                Résumé
 404.html
 robots.txt · sitemap.xml
 docs/                   Project analysis and build notes (not part of the site)
