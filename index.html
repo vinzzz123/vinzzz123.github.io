@@ -1,1193 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kristofferus Vincentio Widjaya - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0ea5e9;
-            --secondary: #8b5cf6;
-            --accent: #f59e0b;
-            --dark: #0f172a;
-            --gray: #475569;
-            --light: #f8fafc;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--gray);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-menu a:hover {
-            color: var(--primary);
-        }
-
-        .nav-menu a::before {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: all 0.3s;
-            transform: translateX(-50%);
-        }
-
-        .nav-menu a:hover::before {
-            width: 100%;
-        }
-
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-        }
-
-        .mobile-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--dark);
-            border-radius: 3px;
-            transition: all 0.3s;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
-            padding: 8rem 2rem 6rem;
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -2px;
-        }
-
-        .hero-text .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-
-        .hero-text p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--white);
-            color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn-outline:hover {
-            background: var(--white);
-            color: var(--primary);
-        }
-
-        .hero-clients {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .hero-clients h3 {
-            color: var(--white);
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .top-clients-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .top-client-card {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .top-client-card:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateX(10px);
-        }
-
-        .top-client-icon {
-            font-size: 3rem;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--white);
-            border-radius: 12px;
-            flex-shrink: 0;
-        }
-
-        .top-client-info h4 {
-            color: var(--white);
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-            font-weight: 700;
-        }
-
-        .top-client-info p {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        section {
-            padding: 6rem 2rem;
-            position: relative;
-            isolation: isolate;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            letter-spacing: -1px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: var(--gray);
-            margin-top: 1.5rem;
-        }
-
-        .about {
-            background: var(--white);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            line-height: 1.8;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .stat-item {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            color: var(--white);
-            transition: transform 0.3s;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-number {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            opacity: 0.95;
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-box {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .skill-box:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .skill-box h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .skill-icon {
-            font-size: 2rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-tag {
-            padding: 0.6rem 1.2rem;
-            background: var(--white);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .skill-tag:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .projects {
-            background: var(--light);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.4s;
-            border: 2px solid transparent;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            border-color: var(--primary);
-        }
-
-        .project-banner {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-banner::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 10%);
-            background-size: 30px 30px;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            to { transform: translate(30px, 30px); }
-        }
-
-        .project-emoji {
-            font-size: 5rem;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-        }
-
-        .project-body {
-            padding: 2rem;
-        }
-
-        .project-body h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            font-weight: 700;
-        }
-
-        .project-body p {
-            color: var(--gray);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            padding: 0.4rem 1rem;
-            background: var(--light);
-            color: var(--primary);
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .project-link {
-            display: block;
-            text-align: center;
-            padding: 1rem;
-            background: var(--primary);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .project-link:hover {
-            background: var(--secondary);
-            transform: scale(1.02);
-        }
-
-        .contact {
-            background: var(--dark);
-            color: var(--white);
-        }
-
-        .contact .section-title {
-            color: var(--white);
-        }
-
-        .contact .section-subtitle {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem 2rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s;
-        }
-
-        .contact-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
-
-        .contact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .contact-card a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-            word-break: break-all;
-        }
-
-        .contact-card a:hover {
-            color: var(--accent);
-        }
-
-        footer {
-            background: #000000;
-            color: var(--white);
-            text-align: center;
-            padding: 2.5rem 2rem;
-        }
-
-        footer p {
-            opacity: 0.7;
-            font-size: 0.95rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            opacity: 0.7;
-            transition: all 0.3s;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--primary);
-        }
-
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--white);
-                flex-direction: column;
-                align-items: center;
-                padding: 3rem 0;
-                transition: left 0.3s;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
-            .hero {
-                padding: 7rem 1.5rem 4rem;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .top-clients-grid {
-                gap: 1rem;
-            }
-
-            .top-client-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .top-client-card:hover {
-                transform: translateY(-10px);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-container {
-                padding: 1rem 1.5rem;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kristofferus Vincentio Widjaya — Software Engineer</title>
+<meta name="description" content="Software engineer. Built an internal billing dashboard used by a 12-person team at a telecoms operator, the corporate platforms behind 3M+ monthly transactions, and a football simulation with its own data pipeline.">
+<link rel="canonical" href="https://vinzzz123.github.io/">
+<meta name="author" content="Kristofferus Vincentio Widjaya">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vinzzz123.github.io/">
+<meta property="og:title" content="Kristofferus Vincentio Widjaya — Software Engineer">
+<meta property="og:description" content="An internal billing dashboard used by a 12-person team, corporate platforms behind 3M+ monthly transactions, and a football simulation with its own data pipeline.">
+<meta property="og:image" content="https://vinzzz123.github.io/assets/img/og-image.png">
+<meta property="og:image:alt" content="Kristofferus Vincentio Widjaya — portfolio">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kristofferus Vincentio Widjaya — Software Engineer">
+<meta name="twitter:description" content="Dashboards, corporate platforms, and a football simulation with its own data pipeline.">
+<meta name="twitter:image" content="https://vinzzz123.github.io/assets/img/og-image.png">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f4f4f5">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script>
+    document.documentElement.classList.add('js');
+    try {
+        var t = localStorage.getItem('kvw-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+</script>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">K.V.W</div>
-            <nav>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+    <div class="header-inner">
+        <a class="wordmark" href="#top">Kristofferus&nbsp;Widjaya <span>/ Engineer</span></a>
+        <div class="nav">
+            <nav aria-label="Main">
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#work">Work</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#cv">Experience</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="mobile-toggle" id="mobileToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+            <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-    </header>
+    </div>
+</header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Building Data-Driven Solutions</h1>
-                <p class="subtitle">Data Scientist | ML Engineer | UI/UX Designer | Website Developer</p>
+<main id="main">
+
+<!-- ============ hero ============ -->
+<section class="hero" id="top">
+    <div class="wrap">
+        <div class="hero-lede">
+            <h1>I build software that other people <em>actually use</em>.</h1>
+            <div class="hero-side">
+                <span class="label">Currently</span>
                 <p>
-                    Transforming complex datasets into actionable insights and creating 
-                    innovative solutions that drive real business impact through cutting-edge technology.
+                    Full-stack engineer working in React and Python. My last project replaced a manual
+                    weekly reporting process for a 12-person team at an international telecoms
+                    operator; before that I shipped the
+                    corporate platforms behind three million transactions a month.
                 </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">Explore Projects</a>
-                    <a href="#contact" class="btn btn-outline">Let's Connect</a>
-                </div>
-            </div>
-            
-            <div class="hero-clients">
-                <h3>Featured Clients & Projects</h3>
-                <div class="top-clients-grid">
-                    <div class="top-client-card">
-                        <div class="top-client-icon">🏢</div>
-                        <div class="top-client-info">
-                            <h4>PCA Company</h4>
-                            <p>Business Solutions & Technology Services</p>
-                        </div>
-                    </div>
-                    <div class="top-client-card">
-                        <div class="top-client-icon">🏢</div>
-                        <div class="top-client-info">
-                            <h4>PMA Corporation</h4>
-                            <p>Pandawa Makmur Abadi - IT Solutions & Consultancy</p>
-                        </div>
-                    </div>
-                    <div class="top-client-card">
-                        <div class="top-client-icon">💧</div>
-                        <div class="top-client-info">
-                            <h4>AOI Water</h4>
-                            <p>Automated Optical Inspection for Water Quality</p>
-                        </div>
-                    </div>
+                <div class="hero-actions">
+                    <a class="btn btn--solid" href="#work">See the work</a>
+                    <a class="btn" href="assets/cv.pdf" download>Download CV</a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Passionate technologist with a mission to innovate</p>
+        <dl class="facts">
+            <div>
+                <dt>3M+</dt>
+                <dd>monthly transactions on platforms I&rsquo;ve built for</dd>
             </div>
-            
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3>Hello, I'm Vincent</h3>
+            <div>
+                <dt>12</dt>
+                <dd>people using an internal tool I designed and shipped</dd>
+            </div>
+            <div>
+                <dt>4</dt>
+                <dd>sites live in production for real organisations</dd>
+            </div>
+            <div>
+                <dt>9,355</dt>
+                <dd>player records in a data pipeline I wrote from scratch</dd>
+            </div>
+        </dl>
+    </div>
+</section>
+
+<!-- ============ work ============ -->
+<section class="band" id="work">
+    <div class="wrap">
+        <div class="band-head reveal">
+            <h2>Selected work</h2>
+            <p>
+                Client work and personal projects, ordered by what I&rsquo;d want to talk about first.
+                Three have full case studies. The personal ones aren&rsquo;t products &mdash; they&rsquo;re
+                where I go to solve a problem properly with nobody&rsquo;s deadline on it.
+            </p>
+        </div>
+
+        <div class="entries">
+
+            <!-- 01 -->
+            <article class="entry entry--figure reveal">
+                <div class="entry-no">01</div>
+                <div class="entry-body">
+                    <div class="entry-text">
+                        <div>
+                            <h3><a href="projects/prism.html">PRISM &mdash; internal billing dashboard</a></h3>
+                            <p class="entry-kicker"><span class="label">Case study</span><span class="label">Internship</span></p>
+                        </div>
+                        <p>
+                            Built during my internship for the Service Readiness team, who were rebuilding
+                            the same report by hand every week from fixed-template exports. PRISM ingests
+                            those exports and produces partner and currency breakdowns, a contract renewal
+                            pipeline, and a termination impact analyser that surfaces which dependent
+                            services a cancellation would affect. Around 9,900 lines across 30 modules,
+                            with role-based access over three permission tiers.
+                        </p>
+                        <ul class="stack">
+                            <li>React 19</li><li>Express</li><li>SQLite</li><li>Tailwind</li><li>Recharts</li>
+                        </ul>
+                        <p class="entry-links"><a class="go" href="projects/prism.html">Read the case study</a></p>
+                    </div>
+                    <figure class="shot">
+                        <img src="assets/img/prism.png" alt="The PRISM dashboard showing billing and service continuity data" loading="lazy" decoding="async" width="1600" height="735">
+                        <figcaption>Identifying details redacted</figcaption>
+                    </figure>
+                </div>
+            </article>
+
+            <!-- 02 -->
+            <article class="entry reveal">
+                <div class="entry-no">02</div>
+                <div class="entry-body">
+                    <div>
+                        <h3><a href="projects/38-nil.html">38 NIL &mdash; football draft game</a></h3>
+                        <p class="entry-kicker"><span class="label">Case study</span><span class="label">Personal</span></p>
+                    </div>
                     <p>
-                        A dedicated data scientist and full-stack developer specializing in machine learning, 
-                        big data analytics, and website developing. I combine technical expertise 
-                        with creative problem-solving to deliver impactful results.
+                        Nobody asked for this one. Spin a club-season from any of Europe&rsquo;s five major
+                        leagues, draft an XI and a manager, then play a full 38-match round-robin &mdash;
+                        every other fixture simulated too, so the table is real. 9,355 players across 660
+                        club-seasons, merged from a hand-rated set and a FIFA CSV that spell every club and
+                        player differently. Chemistry is derived from the pitch shape rather than a fixed
+                        formation graph. It&rsquo;s the project where I got to make every decision for its
+                        own sake, and the one I&rsquo;d most like to be asked about.
                     </p>
+                    <ul class="stack"><li>React 19</li><li>Vite</li><li>Node</li><li>Data pipeline</li></ul>
+                    <p class="entry-links"><a class="go" href="projects/38-nil.html">Read the case study</a></p>
+                </div>
+            </article>
+
+            <!-- 03 -->
+            <article class="entry entry--figure reveal">
+                <div class="entry-no">03</div>
+                <div class="entry-body">
+                    <div class="entry-text">
+                        <div>
+                            <h3><a href="projects/kyokushin.html">Kyokushin-kan Indonesia</a></h3>
+                            <p class="entry-kicker"><span class="label">Case study</span><span class="label">Client</span></p>
+                        </div>
+                        <p>
+                            Public site and member management back office for a national karate
+                            organisation. Per-request CSP nonces, an IP-gated admin panel, rate-limited
+                            authentication, and role-based access across public, member, and admin tiers.
+                            Built in Flask, then ported to PHP to fit the client&rsquo;s shared hosting
+                            &mdash; and shipped with a deployment runbook covering the failure modes I hit
+                            getting it live.
+                        </p>
+                        <ul class="stack"><li>Flask</li><li>SQLite</li><li>PHP</li><li>MySQL</li></ul>
+                        <p class="entry-links"><a class="go" href="projects/kyokushin.html">Read the case study</a></p>
+                    </div>
+                    <figure class="shot">
+                        <img src="assets/img/kyokushin.png" alt="The Kyokushin-kan Indonesia public site" loading="lazy" decoding="async" width="1600" height="733">
+                        <figcaption>Public site</figcaption>
+                    </figure>
+                </div>
+            </article>
+
+            <!-- 04 -->
+            <article class="entry entry--figure reveal">
+                <div class="entry-no">04</div>
+                <div class="entry-body">
+                    <div class="entry-text">
+                        <div>
+                            <h3>Corporate websites &mdash; PMA &amp; PCA</h3>
+                            <p class="entry-kicker"><span class="label">Client</span><span class="label">Live</span></p>
+                        </div>
+                        <p>
+                            Two corporate platforms for Indonesian consultancies whose clients include
+                            Telkomsel, XL Axiata, and Prudential. PMA runs nine pages on a dark-first theme
+                            system with a centralised config layer and a portfolio section documenting
+                            thirteen delivered systems &mdash; among them a payment switchboard for
+                            Jatelindo and a reporting dashboard covering 3M+ monthly transaction records.
+                            PCA covers eight business lines from IT solutions to architecture.
+                        </p>
+                        <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Design systems</li></ul>
+                        <p class="entry-links">
+                            <a class="go" href="https://pma.co.id/" target="_blank" rel="noopener noreferrer">pma.co.id</a>
+                            <a class="go" href="https://pca.co.id/" target="_blank" rel="noopener noreferrer">pca.co.id</a>
+                        </p>
+                    </div>
+                    <figure class="shot">
+                        <img src="assets/img/pma.png" alt="The PMA corporate website home page" loading="lazy" decoding="async" width="1600" height="753">
+                        <figcaption>PMA &mdash; pma.co.id</figcaption>
+                    </figure>
+                </div>
+            </article>
+
+            <!-- 05 -->
+            <article class="entry reveal">
+                <div class="entry-no">05</div>
+                <div class="entry-body">
+                    <div>
+                        <h3>Meeting Transcriber</h3>
+                        <p class="entry-kicker"><span class="label">Personal</span></p>
+                    </div>
                     <p>
-                        From building automated optical inspection systems to developing comprehensive 
-                        financial dashboards and processing large-scale datasets, I thrive on challenges 
-                        that push technological boundaries.
+                        Upload an MP3, get back a named, timestamped Word document. Speaker diarisation
+                        works out who spoke when &mdash; but a model can only tell you &ldquo;Speaker
+                        0&rdquo;, so the app clips a sample of each voice and lets you assign real names
+                        before export. Runs fully offline on WhisperX, with a Deepgram cloud path added
+                        later: a trade of local GPU cost against sending meeting audio to a third party.
                     </p>
+                    <ul class="stack"><li>FastAPI</li><li>WhisperX</li><li>pyannote</li><li>React</li></ul>
+                    <p class="entry-note">Runs locally. Happy to walk through the code.</p>
+                </div>
+            </article>
+
+            <!-- 06 -->
+            <article class="entry reveal">
+                <div class="entry-no">06</div>
+                <div class="entry-body">
+                    <div>
+                        <h3>Project Oracle &mdash; IDX screener</h3>
+                        <p class="entry-kicker"><span class="label">Personal</span></p>
+                    </div>
                     <p>
-                        My work spans multiple industries including manufacturing, finance, entertainment, 
-                        and IT consultancy, bringing data-driven insights and robust solutions to every project.
+                        Ranks Indonesian Stock Exchange listings on a six-factor model &mdash; growth,
+                        size, valuation, quality, momentum, and catalysts &mdash; weighted toward growth
+                        and small caps. Every component score is returned alongside the total, so a ranking
+                        can be explained rather than just trusted. SQLite caching with a 24-hour TTL keeps
+                        a few hundred tickers scannable without hammering the API. Paired with a
+                        mean-reversion backtester that exports per-trade results.
+                    </p>
+                    <ul class="stack"><li>Python</li><li>pandas</li><li>yfinance</li><li>SQLite</li></ul>
+                    <p class="entry-links"><a class="go" href="https://github.com/vinzzz123/Oracle" target="_blank" rel="noopener noreferrer">Source</a></p>
+                </div>
+            </article>
+
+            <!-- 07 -->
+            <article class="entry reveal">
+                <div class="entry-no">07</div>
+                <div class="entry-body">
+                    <div>
+                        <h3>Document extraction pipeline</h3>
+                        <p class="entry-kicker"><span class="label">Client</span></p>
+                    </div>
+                    <p>
+                        Tools for pulling structured data out of Indonesian tax and billing documents. The
+                        tax extractor reads BP21 withholding certificates into a twelve-column spreadsheet,
+                        using the PDF text layer where one exists and falling back to Indonesian-language
+                        OCR where it doesn&rsquo;t. Fields are located by <strong>label anchors rather than
+                        page coordinates</strong>, so a form redesign doesn&rsquo;t break the parser
+                        &mdash; which is the whole reason it still works.
+                    </p>
+                    <ul class="stack"><li>Python</li><li>PyMuPDF</li><li>Tesseract</li><li>openpyxl</li></ul>
+                    <p class="entry-note">Built against real tax and billing documents &mdash; not published, for confidentiality.</p>
+                </div>
+            </article>
+
+            <!-- 08 -->
+            <article class="entry reveal">
+                <div class="entry-no">08</div>
+                <div class="entry-body">
+                    <div>
+                        <h3>Secretary</h3>
+                        <p class="entry-kicker"><span class="label">Personal</span></p>
+                    </div>
+                    <p>
+                        A self-hosted task and event manager with two-way Google Calendar sync. Events
+                        created locally push to Google and stay linked by remote id, so edits and deletions
+                        propagate instead of quietly duplicating on every sync. Telegram delivers the
+                        reminders. Built to actually run on my own machine, not to demo.
+                    </p>
+                    <ul class="stack"><li>Flask</li><li>SQLite</li><li>Google OAuth</li><li>Telegram API</li></ul>
+                    <p class="entry-note">Runs locally. Happy to walk through the code.</p>
+                </div>
+            </article>
+
+            <!-- 09 -->
+            <article class="entry reveal">
+                <div class="entry-no">09</div>
+                <div class="entry-body">
+                    <div>
+                        <h3>Aurelia &mdash; event ticketing</h3>
+                        <p class="entry-kicker"><span class="label">Full stack</span></p>
+                    </div>
+                    <p>
+                        Event platform with public pages, accounts, RSVP, and QR-coded tickets. Next.js App
+                        Router with colocated route handlers, bcrypt password hashing, JWT sessions, and a
+                        seed script so the whole thing runs from a clean clone in one command.
+                    </p>
+                    <ul class="stack"><li>Next.js 14</li><li>React</li><li>SQLite</li><li>JWT</li></ul>
+                    <p class="entry-note">Not currently published. Happy to walk through the code.</p>
+                </div>
+            </article>
+
+            <!-- 10 -->
+            <article class="entry reveal">
+                <div class="entry-no">10</div>
+                <div class="entry-body">
+                    <div>
+                        <h3>RandomCinema</h3>
+                        <p class="entry-kicker"><span class="label">Personal</span></p>
+                    </div>
+                    <p>
+                        Content-based film recommender over a 10,000-title TMDB dataset. Similarity is
+                        computed offline and pickled so the app does a lookup rather than a recomputation
+                        on every interaction &mdash; which matters, because Streamlit re-runs the whole
+                        script each time you touch it. Posters are pulled live from TMDB.
+                    </p>
+                    <ul class="stack"><li>Python</li><li>Streamlit</li><li>scikit-learn</li><li>pandas</li></ul>
+                    <p class="entry-note">Runs locally. Happy to walk through the code.</p>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============ also built ============ -->
+<section class="band band--tint">
+    <div class="wrap">
+        <div class="band-head reveal">
+            <h2>Also built</h2>
+            <p>Smaller things, honestly labelled.</p>
+        </div>
+
+        <div class="rows reveal">
+            <div class="row">
+                <h3>La Sienne</h3>
+                <div>
+                    <p>
+                        Storefront and inventory backend for a fashion label. Stock is derived from a
+                        movement log rather than a mutable counter, so the system can explain how a level
+                        was reached. Scheduled jobs raise low-stock alerts. Built against a live
+                        222-product catalogue.
+                    </p>
+                    <ul class="stack"><li>Express</li><li>node-cron</li><li>React</li></ul>
+                </div>
+            </div>
+            <div class="row">
+                <h3>ProyeKita</h3>
+                <div>
+                    <p>
+                        Interface design for a two-sided developer outsourcing marketplace &mdash; project
+                        posting, portfolios, messaging, and two-way ratings across seven screens.
+                        Front-end prototype; no backend behind it.
+                    </p>
+                    <ul class="stack"><li>HTML</li><li>CSS</li><li>UI design</li></ul>
+                </div>
+            </div>
+            <div class="row">
+                <h3>AOI Nano Cluster Water</h3>
+                <div>
+                    <p>
+                        Five-page product site for a bottled water brand, splitting one product across
+                        three audience-specific landing pages &mdash; wellness, beauty, and sports
+                        performance &mdash; with bilingual copy.
+                    </p>
+                    <ul class="stack"><li>HTML</li><li>CSS</li></ul>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Student performance analysis</h3>
+                <div>
+                    <p>
+                        Multivariate regression predicting GPA from weekly study time and absences,
+                        evaluated on held-out data with a 3D plot of the two-predictor fit.
+                    </p>
+                    <ul class="stack"><li>scikit-learn</li><li>pandas</li><li>Matplotlib</li></ul>
+                </div>
+            </div>
+            <div class="row">
+                <h3>IngfoDoc</h3>
+                <div>
+                    <p>
+                        A health self-assessment flow built for an HCI course &mdash; sign-up through
+                        questionnaire to result, designed as one continuous journey rather than a set of
+                        screens.
+                    </p>
+                    <ul class="stack"><li>HTML</li><li>CSS</li><li>UX</li></ul>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Coursework &amp; experiments</h3>
+                <div>
+                    <p>
+                        C++ data structures and algorithms assignments, a PHP forum, Tableau visualisation,
+                        and assorted automation scripts.
+                        <a href="https://github.com/vinzzz123" target="_blank" rel="noopener noreferrer">On GitHub</a>.
                     </p>
                 </div>
-                
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number">11+</div>
-                        <div class="stat-label">Projects Delivered</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">8+</div>
-                        <div class="stat-label">Technologies</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Innovation</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skills-container" style="margin-top: 4rem;">
-                <div class="skill-box">
-                    <h4><span class="skill-icon">🐍</span> Data Related</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Jupyter</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">RStudio</span>
-                    </div>
-                </div>
-                <div class="skill-box">
-                    <h4><span class="skill-icon">📊</span> Analytics</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Big Data</span>
-                        <span class="skill-tag">Statistics</span>
-                        <span class="skill-tag">Data Viz</span>
-                        <span class="skill-tag">ML</span>
-                        <span class="skill-tag">Deep Learning</span>
-                    </div>
-                </div>
-                <div class="skill-box">
-                    <h4><span class="skill-icon">💻</span> Development</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">UI/UX</span>
-                        <span class="skill-tag">Responsive</span>
-                    </div>
-                </div>
-                <div class="skill-box">
-                    <h4><span class="skill-icon">🤖</span> Machine Learning</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">Computer Vision</span>
-                        <span class="skill-tag">NLP</span>
-                    </div>
-                </div>
-                
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Portfolio Projects</h2>
-                <p class="section-subtitle">Showcasing innovation through code and data</p>
+<!-- ============ about ============ -->
+<section class="band" id="about">
+    <div class="wrap">
+        <div class="band-head reveal">
+            <h2>About</h2>
+            <p>Computer science student at Bina Nusantara University, Jakarta.</p>
+        </div>
+
+        <div class="two-col reveal">
+            <div>
+                <span class="label">Toolkit</span>
+                <div class="rows" style="margin-top:1rem;">
+                    <div class="row" style="grid-template-columns:1fr; gap:.5rem;">
+                        <h3>Building</h3>
+                        <ul class="stack"><li>React</li><li>Next.js</li><li>JavaScript</li><li>Vite</li><li>HTML</li><li>CSS</li><li>Tailwind</li></ul>
+                    </div>
+                    <div class="row" style="grid-template-columns:1fr; gap:.5rem;">
+                        <h3>Back end &amp; data stores</h3>
+                        <ul class="stack"><li>Python</li><li>Flask</li><li>FastAPI</li><li>Node</li><li>Express</li><li>SQLite</li><li>MySQL</li><li>PHP</li></ul>
+                    </div>
+                    <div class="row" style="grid-template-columns:1fr; gap:.5rem;">
+                        <h3>Data &amp; analysis</h3>
+                        <ul class="stack"><li>pandas</li><li>NumPy</li><li>scikit-learn</li><li>Matplotlib</li><li>Tableau</li></ul>
+                    </div>
+                    <div class="row" style="grid-template-columns:1fr; gap:.5rem;">
+                        <h3>Shipping</h3>
+                        <ul class="stack"><li>Git</li><li>cPanel deploys</li><li>OAuth 2.0</li><li>JWT</li><li>REST</li><li>OCR</li></ul>
+                    </div>
+                </div>
             </div>
-            
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">🛍️</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Product Recommendation System</h3>
-                        <p>
-                            ML-powered recommendation engine using collaborative filtering and content-based algorithms 
-                            to provide personalized product suggestions and improve user engagement.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">ML</span>
-                        </div>
-                        <a href="https://github.com/vinzzz123/Product-Recommendation" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">🏢</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>PMA Corporate Website</h3>
-                        <p>
-                            Full-featured corporate website for Pandawa Makmur Abadi, offering IT solutions, 
-                            procurement services, and corporate consultancy with responsive design.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML/CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive</span>
-                            <span class="tech-tag">SEO</span>
-                        </div>
-                        <a href="https://pma.co.id/" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">🎬</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Film Analytics</h3>
-                        <p>
-                            Comprehensive film dataset analysis exploring box office trends, genre patterns, 
-                            and audience preferences using advanced statistical methods.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Matplotlib</span>
-                            <span class="tech-tag">Seaborn</span>
-                        </div>
-                        <a href="https://github.com/vinzzz123/Film" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">📊</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Big Data Processing</h3>
-                        <p>
-                            Large-scale data processing pipeline implementing distributed computing techniques 
-                            for efficient handling and analysis of massive datasets.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Spark</span>
-                            <span class="tech-tag">Hadoop</span>
-                            <span class="tech-tag">PySpark</span>
-                        </div>
-                        <a href="https://github.com/vinzzz123/Big-Dataa" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">📈</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Data Analysis Suite</h3>
-                        <p>
-                            Comprehensive analytical toolkit featuring statistical modeling, exploratory data 
-                            analysis, and predictive analytics for informed decision-making.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">NumPy</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Statistics</span>
-                        </div>
-                        <a href="https://github.com/vinzzz123/Analysis" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">💰</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Finance Dashboard</h3>
-                        <p>
-                            Interactive financial analytics dashboard tracking market trends, portfolio performance, 
-                            and investment insights with real-time data visualizations.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Chart.js</span>
-                        </div>
-                        <a href="https://github.com/vinzzz123/Finance" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">📊</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Oracle Stock Analysis</h3>
-                        <p>
-                            Stock market analysis tool focused on Oracle Corporation, featuring technical indicators, 
-                            price predictions, and automated trading signals using ML algorithms.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">TA-Lib</span>
-                            <span class="tech-tag">ML</span>
-                        </div>
-                        <a href="https://github.com/vinzzz123/Oracle" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">🔍</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>Automated Optical Inspection</h3>
-                        <p>
-                            Computer vision-powered quality control system for automated defect detection 
-                            and classification in manufacturing and water quality processes.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Deep Learning</span>
-                        </div>
-                        <a href="https://github.com/vinzzz123/AOI2" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">🌐</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>ProyeKita Platform</h3>
-                        <p>
-                            Collaborative web application featuring modern UI/UX design, responsive layouts, 
-                            and interactive user experiences for seamless collaboration.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <a href="https://github.com/vinzzz123/ProyeKita" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-banner">
-                        <div class="project-emoji">🏢</div>
-                    </div>
-                    <div class="project-body">
-                        <h3>PCA Company Website</h3>
-                        <p>
-                            Corporate website and business solutions platform for PCA Company, featuring 
-                            modern design, service showcases, and client management systems.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <a href="https://pca.co.id/">View Project →</a>
-                    </div>
-                </div>
-
+            <div class="prose">
+                <p>
+                    The thread through my work is <strong>systems people depend on</strong>. A billing
+                    dashboard is only useful if the numbers reconcile. A member management site is only
+                    finished when it survives being deployed to shared hosting you don&rsquo;t control. A
+                    tax parser is only good if it still runs after the form gets redesigned. That last one
+                    is why I anchor extraction on labels instead of coordinates &mdash; a lesson learned
+                    the expensive way.
+                </p>
+                <p>
+                    I work across the stack because most of the interesting problems live at the seams:
+                    reconciling two datasets that disagree about spelling, keeping local and remote state
+                    consistent without duplicating records, deciding whether confidential audio should
+                    leave the machine. I care about the parts a user never sees &mdash; caching, auth,
+                    failure modes &mdash; because those are what separate a demo from a tool.
+                </p>
+                <p>
+                    Right now I&rsquo;m looking for engineering work where I can keep shipping things
+                    people actually open.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's collaborate on your next big project</p>
+<!-- ============ experience ============ -->
+<section class="band band--tint" id="cv">
+    <div class="wrap">
+        <div class="band-head reveal">
+            <h2>Experience</h2>
+            <p>
+                Most useful where the problem is messy and the requirements come from talking to the
+                people who have it.
+            </p>
+        </div>
+
+        <div class="cv reveal">
+            <div class="cv-item">
+                <div class="cv-when">Internship</div>
+                <div>
+                    <p class="cv-role">Software Engineering Intern</p>
+                    <p class="cv-org">International telecoms operator &middot; Service readiness</p>
+                    <p>
+                        Built PRISM, a billing and service-continuity dashboard adopted by a 12-person team
+                        to replace a manual weekly reporting process. Iterated through several review
+                        rounds with the people who use it. Also worked on invoice-to-service matching and
+                        automated consolidation of billing exports.
+                    </p>
+                </div>
             </div>
-            
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">🐙</div>
-                    <h4>GitHub</h4>
-                    <a href="https://github.com/vinzzz123" target="_blank">@vinzzz123</a>
+            <div class="cv-item">
+                <div class="cv-when">Client work</div>
+                <div>
+                    <p class="cv-role">Web Developer</p>
+                    <p class="cv-org">PT Pendopo Cendana Abadi &amp; Pandawa Makmur Abadi</p>
+                    <p>
+                        Designed and built the corporate websites for both companies &mdash; nine pages
+                        each, complete design systems with dark mode, and the service and portfolio content
+                        behind them.
+                    </p>
                 </div>
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h4>Email</h4>
-                    <a href="mailto:widjayavinz@gmail.com">widjayavinz@gmail.com</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">💼</div>
-                    <h4>LinkedIn</h4>
-                    <a href="https://www.linkedin.com/in/kristofferus-widjaya-05342628a/" target="_blank">Kristofferus Widjaya</a>
+            </div>
+            <div class="cv-item">
+                <div class="cv-when">Education</div>
+                <div>
+                    <p class="cv-role">Bina Nusantara University</p>
+                    <p class="cv-org">Jakarta</p>
+                    <p>
+                        Coursework across algorithms and data structures, artificial intelligence, data
+                        mining, big data processing, human&ndash;computer interaction, and software
+                        engineering.
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Kristofferus Widjaya All Rights Reserved.</p>
-            <div class="footer-links">
-                <a href="https://github.com/vinzzz123" target="_blank">GitHub</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <p style="margin-top: 1rem; opacity: 0.6;">Crafted with precision and passion</p>
+        <p style="margin-top:2rem;"><a class="btn" href="assets/cv.pdf" download>Download CV (PDF)</a></p>
+    </div>
+</section>
+
+<!-- ============ contact ============ -->
+<section class="band" id="contact">
+    <div class="wrap">
+        <div class="band-head reveal">
+            <h2>Get in touch</h2>
+            <p>Open to engineering roles and freelance builds. I reply to everything.</p>
         </div>
-    </footer>
 
-    <script>
-        const mobileToggle = document.getElementById('mobileToggle');
-        const navMenu = document.getElementById('navMenu');
+        <div class="contact-list reveal">
+            <a href="mailto:widjayavinz@gmail.com">
+                <span class="label">Email</span>
+                <span class="val">widjayavinz@gmail.com</span>
+            </a>
+            <a href="https://github.com/vinzzz123" target="_blank" rel="noopener noreferrer">
+                <span class="label">GitHub</span>
+                <span class="val">@vinzzz123</span>
+            </a>
+            <a href="https://www.linkedin.com/in/kristofferus-widjaya-05342628a/" target="_blank" rel="noopener noreferrer">
+                <span class="label">LinkedIn</span>
+                <span class="val">Kristofferus Widjaya</span>
+            </a>
+            <a href="assets/cv.pdf" download>
+                <span class="label">CV</span>
+                <span class="val">Download PDF</span>
+            </a>
+        </div>
+    </div>
+</section>
 
-        if (mobileToggle && navMenu) {
-            mobileToggle.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-            });
+</main>
 
-            document.querySelectorAll('.nav-menu a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    navMenu.classList.remove('active');
-                });
-            });
-        }
+<footer>
+    <div class="wrap footer-inner">
+        <p>&copy; 2026 Kristofferus Vincentio Widjaya</p>
+        <ul class="footer-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#top">Top</a></li>
+        </ul>
+    </div>
+</footer>
 
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        const header = document.querySelector('header');
-        window.addEventListener('scroll', function() {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.15)';
-            } else {
-                header.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-            }
-        });
-
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const fadeInObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.project-card, .skill-box, .stat-item, .contact-card, .top-client-card').forEach(function(el) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            fadeInObserver.observe(el);
-        });
-    </script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
-
-

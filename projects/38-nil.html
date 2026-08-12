@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>38 NIL — football draft game · Kristofferus Vincentio Widjaya</title>
+<meta name="description" content="Building a five-league all-time football draft game: merging two datasets that disagree about spelling, deriving chemistry from pitch geometry, and simulating a full 38-match season.">
+<link rel="canonical" href="https://vinzzz123.github.io/projects/38-nil.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://vinzzz123.github.io/projects/38-nil.html">
+<meta property="og:title" content="38 NIL — football draft game">
+<meta property="og:description" content="9,355 players, two mismatched datasets, and a season simulation where every fixture is played.">
+<meta property="og:image" content="https://vinzzz123.github.io/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f4f4f5">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<script>
+    document.documentElement.classList.add('js');
+    try {
+        var t = localStorage.getItem('kvw-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+    <div class="header-inner">
+        <a class="wordmark" href="../index.html">Kristofferus&nbsp;Widjaya <span>/ Engineer</span></a>
+        <div class="nav">
+            <nav aria-label="Main">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html#work">Work</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#cv">Experience</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+            <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+
+<section class="study-head">
+    <div class="wrap">
+        <p class="label">Personal project &middot; Built for the fun of it</p>
+        <h1>38 NIL</h1>
+        <p class="standfirst">
+            Spin a club-season, draft an XI, play 38 matchdays. The name is the win condition:
+            played 38, won 38.
+        </p>
+        <dl class="study-facts">
+            <div><dt>Type</dt><dd>Passion project</dd></div>
+            <div><dt>Brief</dt><dd>My own</dd></div>
+            <div><dt>Stack</dt><dd>React 19, Vite, Node</dd></div>
+            <div><dt>Data</dt><dd>9,355 players, 660 club-seasons</dd></div>
+        </dl>
+    </div>
+</section>
+
+<section class="study">
+    <div class="wrap">
+        <div class="study-col">
+        <h2>Why this exists</h2>
+        <p>
+            No client, no course, no deadline. I wanted to build something where every decision was mine
+            to get right or wrong, and where the only person I had to satisfy was me &mdash; which turns
+            out to be a harder brief than it sounds, because nothing is ever &ldquo;good enough to ship.&rdquo;
+        </p>
+        <p>
+            It&rsquo;s also the project I learned the most from. Client work rewards finishing; this one
+            rewarded going back and doing the awkward part properly, three times, until the data
+            reconciled. Most of what follows is that.
+        </p>
+
+        <h2>The idea</h2>
+        <p>
+            Land on a random club-season from any of Europe&rsquo;s five major leagues &mdash; the
+            2003&ndash;04 Arsenal side, say, or a mid-table Bundesliga squad from FIFA 17. Draft eleven
+            players, seven substitutes, and a manager from what that squad offers. Then play a full league
+            season and see where you finish.
+        </p>
+        <p>
+            The constraint that makes it a game rather than a team builder is that you only get what the
+            spin gives you, and rerolls are limited by difficulty &mdash; from unlimited down to none at all.
+        </p>
+
+        <h2>Problem one: two datasets that disagree about everything</h2>
+        <p>
+            The player pool comes from two sources. One is a FIFA/EA CSV covering ten editions, processed
+            down to the strongest twelve clubs per league per edition. The other is a set of club-seasons
+            I rated by hand, reaching back to 1991&ndash;92 for the eras the CSV doesn&rsquo;t cover.
+        </p>
+        <p>
+            They agree on nothing. EA writes <code>FC Bayern M&uuml;nchen</code>; my file says
+            <code>Bayern Munich</code>. EA writes <code>M. Neuer</code>; my file says
+            <code>Manuel Neuer</code>. EA uses <code>CDM</code> and <code>CAM</code>; I&rsquo;d used
+            <code>DM</code> and <code>AM</code>.
+        </p>
+        <p>
+            Club names normalise reasonably well: strip diacritics, lowercase, drop about thirty corporate
+            tokens (<code>fc</code>, <code>ac</code>, <code>ssc</code>, <code>vfb</code>, founding years
+            like <code>1899</code>), and most clubs collapse onto the same key. What&rsquo;s left is the
+            cases where the two sources use different languages entirely, and those need an explicit alias
+            table. There&rsquo;s no clever solution to <em>M&uuml;nchen</em> versus <em>Munich</em>; you
+            write it down.
+        </p>
+
+        <h3>Players are harder, because being wrong is expensive</h3>
+        <p>
+            Every player needs one stable identity, because the id is what stops the same man being drafted
+            twice from two different squads. Matching on surname, first initial, and nationality gets you
+            most of the way &mdash; and then cheerfully marries the 1997 Roberto Carlos to a completely
+            different modern Brazilian of the same name.
+        </p>
+        <p>
+            So the matcher checks date of birth as well: the legend&rsquo;s season has to fall inside that
+            player&rsquo;s plausible career. A legend who matches inherits the real FIFA id. Everyone else
+            gets a negative synthetic id derived from a hash of name and nationality &mdash; stable across
+            rebuilds, guaranteed not to collide with real ids because of the sign.
+        </p>
+
+        <div class="aside">
+            <p>
+                <strong>The lesson.</strong> Fuzzy matching that&rsquo;s 95% right is not 95% as good as
+                matching that&rsquo;s right. Every false positive is a duplicated player in someone&rsquo;s
+                squad. Adding one more independent signal &mdash; a birth date the name match can&rsquo;t
+                fake &mdash; was worth more than any amount of tuning the string comparison.
+            </p>
+        </div>
+
+        <h2>Problem two: chemistry without a fixed formation</h2>
+        <p>
+            Players can be dropped anywhere on the pitch, not just into formation slots &mdash; where you
+            drop someone determines what position he plays. That rules out a pre-drawn link graph, because
+            there&rsquo;s no fixed shape to draw it on.
+        </p>
+        <p>
+            So the links are derived from the geometry instead. Sort the occupied positions vertically,
+            split them into bands wherever there&rsquo;s a real vertical gap, then:
+        </p>
+        <ul>
+            <li>link neighbours along each band</li>
+            <li>link each player to the nearest body in the band ahead, plus anyone close enough horizontally</li>
+            <li>link across two bands when both hug the same touchline &mdash; a left back and a left winger connect through the midfield</li>
+        </ul>
+        <p>
+            A free-form XI generates its own web. Each link is then scored: same club and same season is
+            perfect, same club is strong, same league and same nationality is strong, either alone is weak,
+            neither is nothing.
+        </p>
+
+        <h3>The decision I&rsquo;m happiest with</h3>
+        <p>
+            There is <strong>no out-of-position penalty</strong>. It seems like an obvious feature and I
+            deliberately left it out.
+        </p>
+        <p>
+            Every player carries fifteen positional ratings from the source data. Messi at striker is 94
+            because the data says he&rsquo;s 94 there. Messi at centre back is 55, for the same reason. The
+            cost of misusing a player is already priced into the number. Adding a penalty on top would
+            charge for the same mistake twice.
+        </p>
+        <p>
+            The UI still flags a player as misplaced when his rating in that slot drops meaningfully below
+            his overall &mdash; but that&rsquo;s presentation. It tells you something looks wrong without
+            pretending to be a second, independent judgement.
+        </p>
+
+        <h2>Problem three: a league that isn&rsquo;t faked</h2>
+        <p>
+            The easy version simulates your fixtures and invents plausible numbers for everyone else. The
+            table falls apart the moment you look closely at it.
+        </p>
+        <p>
+            38 NIL plays a real 20-team round-robin, mirrored for the return fixtures, and
+            <strong>simulates every match in it</strong> &mdash; not just yours. Opponent strengths come off
+            a fixed curve with a little jitter, then get shuffled so the same club isn&rsquo;t always
+            strong. Goals are drawn from a Poisson distribution over an exponential strength difference,
+            with home advantage applied and the expectation clamped so nothing produces an 11&ndash;0.
+        </p>
+        <p>
+            Injuries happen on a per-matchday roll: the best available substitute for that slot comes in
+            for a few weeks, or an academy player rated 62 does if the bench is exhausted. That&rsquo;s
+            what makes the seven subs a real decision rather than decoration.
+        </p>
+        <p>
+            All of it runs through a seeded pseudo-random generator, so a given draft always produces the
+            same season. You can share a squad and someone else gets your result.
+        </p>
+
+        <h2>The part nobody sees</h2>
+        <p>
+            Six Node scripts build and maintain the data, and they&rsquo;re better organised than the game
+            itself:
+        </p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Script</th><th>Job</th></tr></thead>
+                <tbody>
+                    <tr><td><code>build-pool</code></td><td>FIFA CSV to game pool, with position quotas so every squad has a keeper and a defence. Has an inspect mode for unfamiliar CSV schemas.</td></tr>
+                    <tr><td><code>upgrade-legends</code></td><td>Stamps stable ids and replaces coarse ratings with fifteen real positional ones. Supports a dry run.</td></tr>
+                    <tr><td><code>convert-legends</code></td><td>Migrated the original hard-coded squad list out of the source file.</td></tr>
+                    <tr><td><code>add-nationality</code></td><td>Idempotent &mdash; running it twice is harmless, and anything unmatched is reported rather than guessed.</td></tr>
+                    <tr><td><code>build-nationalities</code></td><td>Maintains a hand-curated country map of ~800 names.</td></tr>
+                    <tr><td><code>check-data</code></td><td>Reads the pool the way the game does and reports every squad missing a manager.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>
+            The data file carries a version marker for its rating order, and the game checks it on load. A
+            stale pool fails loudly instead of silently mis-indexing every rating in the game &mdash; which
+            is exactly the bug that would have taken a week to find.
+        </p>
+
+        <div class="aside">
+            <p>
+                <strong>What I&rsquo;d do differently.</strong> The app is one 2,500-line file. The build
+                scripts are properly modular and the game isn&rsquo;t, which is backwards &mdash; the thing
+                I change most often should be the easiest to navigate. I&rsquo;d also write tests: the
+                interesting functions here are pure and take simple inputs, so there was no good reason not
+                to.
+            </p>
+        </div>
+
+        <div class="aside aside--muted">
+            <p>
+                <strong>Where it lives.</strong> Nowhere public &mdash; this one runs on my machine and
+                that&rsquo;s the point. It isn&rsquo;t a product and I&rsquo;m not maintaining it for
+                anyone, so I&rsquo;d rather keep it as the place I go to build something properly than turn
+                it into a thing with users and a changelog. Happy to walk through the code or run it for
+                you in an interview.
+            </p>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="study-foot">
+    <div class="wrap">
+        <a class="btn" href="prism.html">&larr; PRISM</a>
+        <a class="btn btn--solid" href="kyokushin.html">Next: Kyokushin &rarr;</a>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="wrap footer-inner">
+        <p>&copy; 2026 Kristofferus Vincentio Widjaya</p>
+        <ul class="footer-links">
+            <li><a href="../index.html#work">Work</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

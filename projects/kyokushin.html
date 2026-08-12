@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kyokushin-kan Indonesia — member management site · Kristofferus Vincentio Widjaya</title>
+<meta name="description" content="A public site and member management back office for a national karate organisation — built in Flask, ported to PHP for the client's hosting, and shipped with a deployment runbook.">
+<link rel="canonical" href="https://vinzzz123.github.io/projects/kyokushin.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://vinzzz123.github.io/projects/kyokushin.html">
+<meta property="og:title" content="Kyokushin-kan Indonesia — member management site">
+<meta property="og:description" content="Security, deployment, and what happens when the hosting won't run your stack.">
+<meta property="og:image" content="https://vinzzz123.github.io/assets/img/kyokushin.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f4f4f5">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<script>
+    document.documentElement.classList.add('js');
+    try {
+        var t = localStorage.getItem('kvw-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+    <div class="header-inner">
+        <a class="wordmark" href="../index.html">Kristofferus&nbsp;Widjaya <span>/ Engineer</span></a>
+        <div class="nav">
+            <nav aria-label="Main">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html#work">Work</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#cv">Experience</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+            <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+
+<section class="study-head">
+    <div class="wrap">
+        <p class="label">Case study &middot; Client work</p>
+        <h1>Kyokushin-kan Indonesia</h1>
+        <p class="standfirst">
+            A public site and member management back office for a national karate organisation &mdash;
+            and a lesson in building for hosting you don&rsquo;t control.
+        </p>
+        <dl class="study-facts">
+            <div><dt>Role</dt><dd>Sole developer</dd></div>
+            <div><dt>Stack</dt><dd>Flask &amp; SQLite, then PHP &amp; MySQL</dd></div>
+            <div><dt>Focus</dt><dd>Security, deployment</dd></div>
+            <div><dt>Replaces</dt><dd>An older Bootstrap site</dd></div>
+        </dl>
+    </div>
+</section>
+
+<section class="study">
+    <div class="wrap">
+        <div class="study-col">
+        <h2>The brief</h2>
+        <p>
+            Kyokushin-kan Indonesia is a national karate organisation with dojos across the country. They
+            needed a public presence &mdash; news, dojo directory, instructor profiles, gallery &mdash; and
+            behind it, somewhere to manage members and publish content without going through a developer
+            every time.
+        </p>
+        <p>
+            The site it replaced was an older Bootstrap build. Not broken, but static: every content change
+            meant editing HTML.
+        </p>
+
+        <figure>
+            <img src="../assets/img/kyokushin.png" alt="The Kyokushin-kan Indonesia public site" loading="lazy" decoding="async" width="1600" height="733">
+            <figcaption>The public site.</figcaption>
+        </figure>
+
+        <h2>What I built</h2>
+        <p>
+            A Flask application with a SQLite store, split into a public surface and an authenticated one:
+        </p>
+        <ul>
+            <li><strong>Public</strong> &mdash; news, dojo directory, media by section</li>
+            <li><strong>Members</strong> &mdash; login, session, password change, member search and counts</li>
+            <li><strong>Admin</strong> &mdash; a content management panel behind its own gate</li>
+        </ul>
+
+        <figure>
+            <img src="../assets/img/kyokushin-admin.png" alt="The Kyokushin-kan Indonesia admin panel" loading="lazy" decoding="async" width="1600" height="711">
+            <figcaption>The admin panel &mdash; content management without touching the source.</figcaption>
+        </figure>
+
+        <h2>Taking the security seriously</h2>
+        <p>
+            This site holds a membership list for a real organisation. That&rsquo;s personal data belonging
+            to people who never agreed to be part of a student project, so it got treated accordingly.
+        </p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Measure</th><th>Why</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Per-request CSP nonces</strong></td><td>A content security policy with a fresh nonce each request, rather than the usual escape hatch of allowing all inline script &mdash; which would defeat the point of having one</td></tr>
+                    <tr><td><strong>Rate-limited authentication</strong></td><td>Login is the endpoint worth brute-forcing; it&rsquo;s throttled by IP</td></tr>
+                    <tr><td><strong>IP-gated admin panel</strong></td><td>The admin surface isn&rsquo;t reachable at all from an unexpected address, before authentication is even considered</td></tr>
+                    <tr><td><strong>Proxy-aware client IP</strong></td><td>Behind cPanel&rsquo;s reverse proxy, the naive client address is the proxy&rsquo;s &mdash; which would have made both of the above useless</td></tr>
+                    <tr><td><strong>Role decorators</strong></td><td>Login and admin requirements applied at the route, so a new endpoint has to opt out of protection rather than opt in</td></tr>
+                    <tr><td><strong>Upload allowlist</strong></td><td>Extensions checked against a list of what&rsquo;s permitted, not a list of what isn&rsquo;t</td></tr>
+                    <tr><td><strong>Secrets from environment</strong></td><td>Signing key and initial passwords read from config, never committed</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="aside">
+            <p>
+                <strong>The one that taught me something.</strong> The rate limiter and the admin IP gate
+                both looked fine locally and were both effectively disabled the first time I deployed,
+                because behind a reverse proxy every request appears to come from the proxy. Two separate
+                protections, one shared assumption, and no error to tell me &mdash; they just silently
+                stopped doing anything. I now check how client IP resolves as a deployment step rather than
+                trusting it.
+            </p>
+        </div>
+
+        <h2>Then the hosting didn&rsquo;t cooperate</h2>
+        <p>
+            The client&rsquo;s shared hosting couldn&rsquo;t reliably run a Python application. Indonesian
+            shared hosting is overwhelmingly PHP and MySQL; Python needs Passenger support that isn&rsquo;t
+            always there and isn&rsquo;t always dependable when it is.
+        </p>
+        <p>
+            So I built it again in PHP, keeping the same structure: a library layer for authentication,
+            database access, content, and helpers; a separate page layer for views; schema and seed data as
+            versioned SQL files.
+        </p>
+        <p>
+            Rewriting a working application because of an infrastructure constraint is not a satisfying
+            afternoon. But the alternative &mdash; asking a volunteer-run organisation to pay for hosting
+            they don&rsquo;t need so my stack choice could survive &mdash; would have been the wrong call.
+            The constraint was real and it wasn&rsquo;t theirs to absorb.
+        </p>
+
+        <h2>Shipping it properly</h2>
+        <p>
+            I wrote a deployment runbook, because I was not going to be the person clicking through cPanel
+            in a year&rsquo;s time. It covers the Python application setup, the entry point configuration,
+            an <code>.htaccess</code> rule denying web access to the environment file, correct static file
+            permissions, and where to find the error log when it breaks.
+        </p>
+        <p>
+            It also documents the small things that cost me an hour each and would cost the next person the
+            same: hidden files don&rsquo;t upload unless you turn on hidden-file display first, and the
+            development database has to be deleted before upload or the seeded passwords never regenerate
+            from the environment config.
+        </p>
+
+        <div class="aside">
+            <p>
+                <strong>What I&rsquo;d do differently.</strong> Two codebases in two languages is a
+                maintenance burden I created and would now avoid &mdash; I should have confirmed the
+                hosting constraints before writing the first line, not after. I&rsquo;d also test the
+                authentication and rate-limiting logic; it&rsquo;s the part where a bug does real damage
+                and the part I verified by hand.
+            </p>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="study-foot">
+    <div class="wrap">
+        <a class="btn" href="38-nil.html">&larr; 38 NIL</a>
+        <a class="btn btn--solid" href="../index.html#work">All work &rarr;</a>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="wrap footer-inner">
+        <p>&copy; 2026 Kristofferus Vincentio Widjaya</p>
+        <ul class="footer-links">
+            <li><a href="../index.html#work">Work</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

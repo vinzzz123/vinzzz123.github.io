@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PRISM — internal billing dashboard · Kristofferus Vincentio Widjaya</title>
+<meta name="description" content="How I replaced a 12-person team's manual weekly reporting process with PRISM — a React and Express billing dashboard built during an internship at an international telecoms operator.">
+<link rel="canonical" href="https://vinzzz123.github.io/projects/prism.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://vinzzz123.github.io/projects/prism.html">
+<meta property="og:title" content="PRISM — internal billing dashboard">
+<meta property="og:description" content="Replacing a manual weekly reporting process for a 12-person team at a telecoms operator.">
+<meta property="og:image" content="https://vinzzz123.github.io/assets/img/prism.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f4f4f5">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<script>
+    document.documentElement.classList.add('js');
+    try {
+        var t = localStorage.getItem('kvw-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+    <div class="header-inner">
+        <a class="wordmark" href="../index.html">Kristofferus&nbsp;Widjaya <span>/ Engineer</span></a>
+        <div class="nav">
+            <nav aria-label="Main">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html#work">Work</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#cv">Experience</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+            <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+
+<section class="study-head">
+    <div class="wrap">
+        <p class="label">Case study &middot; Internship</p>
+        <h1>PRISM</h1>
+        <p class="standfirst">
+            A billing and service-continuity dashboard that replaced a manual weekly reporting process
+            for a 12-person team.
+        </p>
+        <dl class="study-facts">
+            <div><dt>Role</dt><dd>Sole developer</dd></div>
+            <div><dt>Stack</dt><dd>React 19, Express, SQLite</dd></div>
+            <div><dt>Scale</dt><dd>~9,900 lines, 30 modules</dd></div>
+            <div><dt>Users</dt><dd>12-person team</dd></div>
+        </dl>
+    </div>
+</section>
+
+<section class="study">
+    <div class="wrap">
+        <div class="study-col">
+        <h2>The problem</h2>
+        <p>
+            The operator&rsquo;s service-readiness team produced a billing and service-continuity report every
+            week. The inputs were always the same fixed-template spreadsheet exports; the process was
+            entirely manual. Someone exported the files, read them, cross-referenced them, and rebuilt the
+            same analysis by hand.
+        </p>
+        <p>
+            The complaint I was given, more or less verbatim, was that producing the weekly summary took a
+            large share of someone&rsquo;s week because it had to be done manually &mdash; and because the
+            export template never changed, that same work was being redone from scratch every time.
+        </p>
+        <p>
+            That last detail is the important one. A fixed template is a schema. If the shape never
+            changes, the parsing never needs to be done by a person.
+        </p>
+
+        <h2>What I built</h2>
+        <p>
+            PRISM ingests those exports and turns them into a live dashboard. The team uploads the same
+            files they were already producing, and the analysis they used to assemble by hand comes out
+            the other side.
+        </p>
+
+        <figure>
+            <img src="../assets/img/prism.png" alt="The PRISM dashboard interface showing billing data views" loading="lazy" decoding="async" width="1600" height="735">
+            <figcaption>The dashboard. Identifying details are redacted.</figcaption>
+        </figure>
+
+        <h3>The feature set</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Module</th><th>What it does</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>REVICON dashboard</strong></td><td>The core revenue and cost review surface</td></tr>
+                    <tr><td><strong>Request summary</strong></td><td>Invoice rollups by partner, currency, and billing period</td></tr>
+                    <tr><td><strong>Contract pipeline</strong></td><td>Renewals and expiries, with what&rsquo;s coming up</td></tr>
+                    <tr><td><strong>Manage service</strong></td><td>Service records with layered overrides</td></tr>
+                    <tr><td><strong>Budget activity</strong></td><td>Budget tracked against activity lines</td></tr>
+                    <tr><td><strong>Data hub</strong></td><td>Upload and parse orchestration</td></tr>
+                    <tr><td><strong>Snapshot history</strong></td><td>Versioned uploads the team can compare and vote on</td></tr>
+                    <tr><td><strong>Action log</strong></td><td>An audit trail of what changed and who changed it</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>The termination impact analyser</h3>
+        <p>
+            This one came directly out of a conversation rather than a spec. Terminating a service
+            isn&rsquo;t an isolated act &mdash; other services depend on it, and cancelling one can strand
+            another. The requirement, once we&rsquo;d talked it through, was that the tool had to be able
+            to answer <em>what breaks if I cancel this</em> before anyone cancelled anything.
+        </p>
+        <p>
+            So termination became a two-step flow: request it, see the dependent services it would affect,
+            then confirm. The rule the team wanted was that you cannot terminate without first clarifying
+            the downstream effect.
+        </p>
+
+        <h2>Engineering decisions worth explaining</h2>
+
+        <h3>One sync layer instead of three</h3>
+        <p>
+            State needed to survive a refresh, stay consistent between people looking at the same data,
+            and not lose work if a browser died mid-edit. I&rsquo;d solved that three separate times &mdash;
+            once each in the app shell, the REVICON dashboard, and the budget page &mdash; and the three
+            copies had already started to drift.
+        </p>
+        <p>
+            I replaced them with a single hook. Its contract:
+        </p>
+        <ul>
+            <li>Hydration is <strong>gated on authentication</strong>, so it runs after login rather than firing a 401 on mount and never retrying</li>
+            <li>The server value wins over stale local storage</li>
+            <li>Local storage is written immediately for crash safety; the server push is <strong>debounced 500ms per key</strong>, so a bulk edit coalesces into one request instead of forty</li>
+            <li>A 60-second poll, <strong>paused while the tab is hidden</strong>, plus an immediate poll when the tab regains focus</li>
+            <li>Pending writes are flushed on <code>pagehide</code></li>
+            <li>Storage quota failures dispatch an event so the UI can warn instead of silently losing data</li>
+        </ul>
+        <p>
+            None of that is visible to a user. All of it is the difference between a dashboard people trust
+            and one they double-check against the spreadsheet.
+        </p>
+
+        <h3>Moving authentication off the client</h3>
+        <p>
+            The first version validated PINs in the browser and kept the user object in
+            <code>sessionStorage</code>. Both were wrong, and I fixed them together: PIN validation moved
+            server-side behind bcrypt, and the client now stores only an auth token &mdash; never a
+            credential.
+        </p>
+        <p>
+            Around 35 endpoints sit behind an auth middleware, with a second guard on
+            manager-only routes, and three separate rate limiters covering general traffic, login attempts,
+            and Telegram notifications.
+        </p>
+
+        <h3>A permission model shaped by the team, not the framework</h3>
+        <p>
+            The obvious design is admin and user. The actual team didn&rsquo;t work that way. Twelve
+            members, of whom four performed the REVICON reviews and submitted actions, and seven had no
+            login at all but whose service records still needed to be visible to everyone.
+        </p>
+        <p>
+            So the model has three tiers, and they map to how the work is really divided rather than to a
+            tidy abstraction. It was more code than the generic version and it meant the tool matched the
+            team instead of asking the team to match the tool.
+        </p>
+
+        <h2>How it was built</h2>
+        <p>
+            Iteratively, with the people who would use it. Review rounds produced feedback I acted on
+            directly &mdash; adding percentages to the request summary, folding a pending state into the
+            active/terminated status, restructuring the proposal to lead with the benefit of the programme
+            rather than its mechanics.
+        </p>
+        <p>
+            I also ran a self-review pass over the codebase and tagged findings by severity, then worked
+            through them in place. Those tags are still in the source as comments next to the fixes, which
+            means the reasoning is available to whoever reads it next.
+        </p>
+
+        <div class="aside">
+            <p>
+                <strong>What I&rsquo;d do differently.</strong> The Excel parsers are the highest-risk part
+                of the system &mdash; they run against files whose format I don&rsquo;t control &mdash; and
+                they were the last thing I wrote tests for rather than the first. I&rsquo;d invert that
+                next time. I&rsquo;d also reach for a real database migration path earlier; SQLite was the
+                right call for the trial, but I set it up in a way that made schema changes more manual
+                than they needed to be.
+            </p>
+        </div>
+
+        <h2>Outcome</h2>
+        <p>
+            PRISM was trialled with the Service Readiness team and iterated through several rounds of their
+            feedback. The weekly report that had been assembled by hand became a page you open.
+        </p>
+
+        <div class="aside aside--muted">
+            <p>
+                <strong>On what&rsquo;s shown here.</strong> PRISM was built for a client under a
+                confidentiality agreement. The source, the database, and the client billing data
+                aren&rsquo;t published, and the screenshot is redacted. What&rsquo;s described above is my
+                own work and approach. Happy to talk through the architecture in more detail in an
+                interview.
+            </p>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="study-foot">
+    <div class="wrap">
+        <a class="btn" href="../index.html#work">&larr; All work</a>
+        <a class="btn btn--solid" href="38-nil.html">Next: 38 NIL &rarr;</a>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="wrap footer-inner">
+        <p>&copy; 2026 Kristofferus Vincentio Widjaya</p>
+        <ul class="footer-links">
+            <li><a href="../index.html#work">Work</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
